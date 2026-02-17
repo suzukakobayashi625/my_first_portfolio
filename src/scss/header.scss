@@ -1,23 +1,22 @@
-$basic-cream: #fdefd9;
-$basic-moji_color: #0f2b3e;
-$basic-blue: #194a6c;
-$basic-red: #c83241;
+$basic-1: #f5faff;
+$basic-2: #144923;
+$basic-3: #93d013;
 
 .header_container {
   display: flex;
   align-items: center;
-  background-color: $basic-cream;
+  background-color: $basic-1;
   position: sticky;
   top: 0;
   z-index: 100;
   box-shadow: 4px 7px 8px -3px rgba(156, 156, 156, 0.3);
-  font-size: 1.4rem;
+  font-size: 1.3rem;
   padding: 1rem;
   font-family: 'Arial', sans-serif;
   gap: 3rem;
 
   .main_title {
-    color: $basic-red;
+    color: $basic-3;
     padding: 3px;
     cursor: pointer;
   }
@@ -25,7 +24,7 @@ $basic-red: #c83241;
   .sub_title_wrapper {
     display: flex;
     align-items: center;
-    color: $basic-blue;
+    color: $basic-2;
     align-items: center;
     gap: 1.5rem;
 

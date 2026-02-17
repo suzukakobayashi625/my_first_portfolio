@@ -1,10 +1,9 @@
-$basic-cream: #fdefd9;
-$basic-moji_color: #0f2b3e;
-$basic-blue: #194a6c;
-$basic-red: #c83241;
+$basic-1: #f5faff;
+$basic-2: #144923;
+$basic-3: #93d013;
 
 .main_container {
-  background-color: $basic-cream;
+  background-color: $basic-1;
   display: flex;
   flex-direction: column;
   gap: 4rem;
@@ -23,7 +22,7 @@ $basic-red: #c83241;
       left: 0;
       width: 100%;
       height: 100%;
-      background-color: #e0bd71;
+      background-color: #144923;
       opacity: 0.4;
     }
 
@@ -32,10 +31,10 @@ $basic-red: #c83241;
       top: 40%;
       left: 0;
       color: white;
-      font-size: 2.5rem;
+      font-size: 2.3rem;
       font-weight: 600;
       background-color: rgba(0, 0, 0, 0.3);
-      padding: 8px 40px;
+      padding: 15px 40px;
       width: 35%;
     }
   }
@@ -49,7 +48,7 @@ $basic-red: #c83241;
 
     .title {
       font-size: 1.3rem;
-      color: $basic-blue;
+      color: $basic-3;
     }
 
     .profile_wrapper {
@@ -64,8 +63,33 @@ $basic-red: #c83241;
       }
 
       .introduction {
-        font-size: 0.9rem;
+        font-size: 0.85rem;
         width: 55%;
+        color: $basic-2;
+        display: flex;
+        flex-direction: column;
+        gap: 5px;
+
+        .details {
+          display: flex;
+          flex-direction: column;
+          gap: 3px;
+
+          .hobby,
+          .ricense {
+            display: flex;
+            align-items: center;
+            gap: 5px;
+
+            .marker {
+              background-color: $basic-2;
+              color: white;
+              padding: 1px 8px;
+              font-size: 0.75rem;
+              border-radius: 100px;
+            }
+          }
+        }
       }
     }
   }
@@ -78,7 +102,7 @@ $basic-red: #c83241;
 
     .title {
       font-size: 1.3rem;
-      color: $basic-blue;
+      color: $basic-3;
       text-align: center;
     }
 
@@ -117,37 +141,56 @@ $basic-red: #c83241;
 
     .title {
       font-size: 1.3rem;
-      color: $basic-blue;
+      color: $basic-3;
       text-align: center;
     }
 
     .skill_wrapper {
       display: flex;
       flex-direction: column;
+      align-items: center;
+      gap: 1rem;
 
-      .top_wrapper {
+      .detail_wrapper {
         display: flex;
-        justify-content: center;
-      }
+        width: 90%;
+        gap: 1rem;
+        background-color: #94d01327;
+        padding: 0.8rem;
 
-      .bottom_wrapper {
-        display: flex;
-        justify-content: center;
+        .sentence {
+          width: 100%;
+          border: 1px solid $basic-2;
+          padding: 0.5rem;
+          border-radius: 0.4rem;
+          display: flex;
+          flex-direction: column;
+          align-items: center;
+          color: $basic-2;
+          gap: 3px;
+
+          .detail {
+            font-size: 0.85rem;
+          }
+        }
       }
 
       .card {
         background-color: white;
         box-shadow: 4px 7px 8px -3px rgba(156, 156, 156, 0.3);
         padding: 1rem;
-        width: 25%;
         border-radius: 0.4rem;
         display: flex;
         flex-direction: column;
         align-items: center;
+      }
 
-        .card_title {
-          color: $basic-blue;
-        }
+      .top_wrapper {
+        display: flex;
+      }
+
+      .bottom_wrapper {
+        display: flex;
       }
     }
   }

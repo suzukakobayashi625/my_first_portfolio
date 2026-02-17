@@ -16,8 +16,15 @@ const Profile = () => {
 						主にフロントエンド領域が得意ですが、DB操作やバックエンドについても経験があります。<br />
 						詳細はWORKSに記載していますが、社内顧客管理システム・BtoB向け業務アプリケーションなどに参画しておりました。
 					</div>
-					<div>
-						趣味：ゲーム、一人旅（最近は香港やオーストラリアに行きました。）
+					<div className="details">
+						<div className="hobby">
+							<div className="marker">趣味</div>
+							<div>ゲーム、一人旅（最近は香港やオーストラリアに行きました。）</div>
+						</div>
+						<div className="ricense">
+							<div className="marker">資格</div>
+							<div>AWS Cloud Plactitioner</div>
+						</div>
 					</div>
 				</div>
 			</div>
