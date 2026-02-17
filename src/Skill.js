@@ -10,7 +10,7 @@ const Skill = () => {
 				<div className="detail_wrapper">
 					<div className="sentence">
 						<div className="icon"><FontAwesomeIcon icon={faGem} className="valid_icon" /></div>
-						<div className="detail">業務上操作したことがある程度</div>
+						<div className="detail">業務上使用したことがある程度</div>
 					</div>
 					<div className="sentence">
 						<div className="icon">
@@ -18,7 +18,7 @@ const Skill = () => {
 							<FontAwesomeIcon icon={faGem} className="valid_icon" />
 							<FontAwesomeIcon icon={faGem} className="valid_icon" />
 						</div>
-						<div className="detail">基本的操作が可能</div>
+						<div className="detail">基本的な操作が可能</div>
 					</div>
 					<div className="sentence">
 						<div className="icon">
@@ -28,7 +28,7 @@ const Skill = () => {
 							<FontAwesomeIcon icon={faGem} className="valid_icon" />
 							<FontAwesomeIcon icon={faGem} className="valid_icon" />
 						</div>
-						<div className="detail">頻繁に操作することがあり、発展的な使用も経験済み</div>
+						<div className="detail">頻繁に使用することがあり、発展的な利用方法も経験済み</div>
 					</div>
 				</div>
 				<div className="top_wrapper">
@@ -69,10 +69,10 @@ const Skill = () => {
 										<td>
 											<div className="level">
 												<FontAwesomeIcon icon={faGem} className="valid_icon" />
-												<FontAwesomeIcon icon={faGem} className="valid_icon" />
-												<FontAwesomeIcon icon={faGem} className="valid_icon" />
-												<FontAwesomeIcon icon={faGem} className="valid_icon" />
-												<FontAwesomeIcon icon={faGem} className="valid_icon" />
+												<FontAwesomeIcon icon={faGem} className="invalid_icon" />
+												<FontAwesomeIcon icon={faGem} className="invalid_icon" />
+												<FontAwesomeIcon icon={faGem} className="invalid_icon" />
+												<FontAwesomeIcon icon={faGem} className="invalid_icon" />
 											</div>
 										</td>
 									</tr>
@@ -83,7 +83,7 @@ const Skill = () => {
 					<div className="card">
 						<div className="card_title">BACK END</div>
 						<div className="card_content_wrapper">
-							<tabel>
+							<table>
 								<tbody>
 									<tr>
 										<td>Node.js</td>
@@ -93,8 +93,8 @@ const Skill = () => {
 												<FontAwesomeIcon icon={faGem} className="valid_icon" />
 												<FontAwesomeIcon icon={faGem} className="valid_icon" />
 												<FontAwesomeIcon icon={faGem} className="valid_icon" />
-												<FontAwesomeIcon icon={faGem} className="valid_icon" />
-												<FontAwesomeIcon icon={faGem} className="valid_icon" />
+												<FontAwesomeIcon icon={faGem} className="invalid_icon" />
+												<FontAwesomeIcon icon={faGem} className="invalid_icon" />
 											</div>
 										</td>
 									</tr>
@@ -104,10 +104,10 @@ const Skill = () => {
 										<td>
 											<div className="level">
 												<FontAwesomeIcon icon={faGem} className="valid_icon" />
-												<FontAwesomeIcon icon={faGem} className="valid_icon" />
-												<FontAwesomeIcon icon={faGem} className="valid_icon" />
-												<FontAwesomeIcon icon={faGem} className="valid_icon" />
-												<FontAwesomeIcon icon={faGem} className="valid_icon" />
+												<FontAwesomeIcon icon={faGem} className="invalid_icon" />
+												<FontAwesomeIcon icon={faGem} className="invalid_icon" />
+												<FontAwesomeIcon icon={faGem} className="invalid_icon" />
+												<FontAwesomeIcon icon={faGem} className="invalid_icon" />
 											</div>
 										</td>
 									</tr>
@@ -125,7 +125,7 @@ const Skill = () => {
 										</td>
 									</tr>
 								</tbody>
-							</tabel>
+							</table>
 						</div>
 					</div>
 				</div>
@@ -143,7 +143,7 @@ const Skill = () => {
 												<FontAwesomeIcon icon={faGem} className="valid_icon" />
 												<FontAwesomeIcon icon={faGem} className="valid_icon" />
 												<FontAwesomeIcon icon={faGem} className="valid_icon" />
-												<FontAwesomeIcon icon={faGem} className="valid_icon" />
+												<FontAwesomeIcon icon={faGem} className="invalid_icon" />
 											</div>
 										</td>
 									</tr>
@@ -154,8 +154,8 @@ const Skill = () => {
 												<FontAwesomeIcon icon={faGem} className="valid_icon" />
 												<FontAwesomeIcon icon={faGem} className="valid_icon" />
 												<FontAwesomeIcon icon={faGem} className="valid_icon" />
-												<FontAwesomeIcon icon={faGem} className="valid_icon" />
-												<FontAwesomeIcon icon={faGem} className="valid_icon" />
+												<FontAwesomeIcon icon={faGem} className="invalid_icon" />
+												<FontAwesomeIcon icon={faGem} className="invalid_icon" />
 											</div>
 										</td>
 									</tr>
@@ -166,8 +166,8 @@ const Skill = () => {
 												<FontAwesomeIcon icon={faGem} className="valid_icon" />
 												<FontAwesomeIcon icon={faGem} className="valid_icon" />
 												<FontAwesomeIcon icon={faGem} className="valid_icon" />
-												<FontAwesomeIcon icon={faGem} className="valid_icon" />
-												<FontAwesomeIcon icon={faGem} className="valid_icon" />
+												<FontAwesomeIcon icon={faGem} className="invalid_icon" />
+												<FontAwesomeIcon icon={faGem} className="invalid_icon" />
 											</div>
 										</td>
 									</tr>
@@ -177,9 +177,9 @@ const Skill = () => {
 											<div className="level">
 												<FontAwesomeIcon icon={faGem} className="valid_icon" />
 												<FontAwesomeIcon icon={faGem} className="valid_icon" />
-												<FontAwesomeIcon icon={faGem} className="valid_icon" />
-												<FontAwesomeIcon icon={faGem} className="valid_icon" />
-												<FontAwesomeIcon icon={faGem} className="valid_icon" />
+												<FontAwesomeIcon icon={faGem} className="invalid_icon" />
+												<FontAwesomeIcon icon={faGem} className="invalid_icon" />
+												<FontAwesomeIcon icon={faGem} className="invalid_icon" />
 											</div>
 										</td>
 									</tr>
@@ -189,9 +189,9 @@ const Skill = () => {
 											<div className="level">
 												<FontAwesomeIcon icon={faGem} className="valid_icon" />
 												<FontAwesomeIcon icon={faGem} className="valid_icon" />
-												<FontAwesomeIcon icon={faGem} className="valid_icon" />
-												<FontAwesomeIcon icon={faGem} className="valid_icon" />
-												<FontAwesomeIcon icon={faGem} className="valid_icon" />
+												<FontAwesomeIcon icon={faGem} className="invalid_icon" />
+												<FontAwesomeIcon icon={faGem} className="invalid_icon" />
+												<FontAwesomeIcon icon={faGem} className="invalid_icon" />
 											</div>
 										</td>
 									</tr>
@@ -205,26 +205,14 @@ const Skill = () => {
 							<table>
 								<tbody>
 									<tr>
-										<td>Lambda</td>
+										<td>Lambda + API Gateway</td>
 										<td>
 											<div className="level">
 												<FontAwesomeIcon icon={faGem} className="valid_icon" />
 												<FontAwesomeIcon icon={faGem} className="valid_icon" />
 												<FontAwesomeIcon icon={faGem} className="valid_icon" />
-												<FontAwesomeIcon icon={faGem} className="valid_icon" />
-												<FontAwesomeIcon icon={faGem} className="valid_icon" />
-											</div>
-										</td>
-									</tr>
-									<tr>
-										<td>API Gateway</td>
-										<td>
-											<div className="level">
-												<FontAwesomeIcon icon={faGem} className="valid_icon" />
-												<FontAwesomeIcon icon={faGem} className="valid_icon" />
-												<FontAwesomeIcon icon={faGem} className="valid_icon" />
-												<FontAwesomeIcon icon={faGem} className="valid_icon" />
-												<FontAwesomeIcon icon={faGem} className="valid_icon" />
+												<FontAwesomeIcon icon={faGem} className="invalid_icon" />
+												<FontAwesomeIcon icon={faGem} className="invalid_icon" />
 											</div>
 										</td>
 									</tr>
@@ -235,8 +223,8 @@ const Skill = () => {
 												<FontAwesomeIcon icon={faGem} className="valid_icon" />
 												<FontAwesomeIcon icon={faGem} className="valid_icon" />
 												<FontAwesomeIcon icon={faGem} className="valid_icon" />
-												<FontAwesomeIcon icon={faGem} className="valid_icon" />
-												<FontAwesomeIcon icon={faGem} className="valid_icon" />
+												<FontAwesomeIcon icon={faGem} className="invalid_icon" />
+												<FontAwesomeIcon icon={faGem} className="invalid_icon" />
 											</div>
 										</td>
 									</tr>
@@ -245,10 +233,10 @@ const Skill = () => {
 										<td>
 											<div className="level">
 												<FontAwesomeIcon icon={faGem} className="valid_icon" />
-												<FontAwesomeIcon icon={faGem} className="valid_icon" />
-												<FontAwesomeIcon icon={faGem} className="valid_icon" />
-												<FontAwesomeIcon icon={faGem} className="valid_icon" />
-												<FontAwesomeIcon icon={faGem} className="valid_icon" />
+												<FontAwesomeIcon icon={faGem} className="invalid_icon" />
+												<FontAwesomeIcon icon={faGem} className="invalid_icon" />
+												<FontAwesomeIcon icon={faGem} className="invalid_icon" />
+												<FontAwesomeIcon icon={faGem} className="invalid_icon" />
 											</div>
 										</td>
 									</tr>
@@ -258,21 +246,21 @@ const Skill = () => {
 											<div className="level">
 												<FontAwesomeIcon icon={faGem} className="valid_icon" />
 												<FontAwesomeIcon icon={faGem} className="valid_icon" />
-												<FontAwesomeIcon icon={faGem} className="valid_icon" />
-												<FontAwesomeIcon icon={faGem} className="valid_icon" />
-												<FontAwesomeIcon icon={faGem} className="valid_icon" />
+												<FontAwesomeIcon icon={faGem} className="invalid_icon" />
+												<FontAwesomeIcon icon={faGem} className="invalid_icon" />
+												<FontAwesomeIcon icon={faGem} className="invalid_icon" />
 											</div>
 										</td>
 									</tr>
 									<tr>
-										<td>Code Pipeline</td>
+										<td>Code Deploy + Code Pipeline</td>
 										<td>
 											<div className="level">
 												<FontAwesomeIcon icon={faGem} className="valid_icon" />
 												<FontAwesomeIcon icon={faGem} className="valid_icon" />
 												<FontAwesomeIcon icon={faGem} className="valid_icon" />
-												<FontAwesomeIcon icon={faGem} className="valid_icon" />
-												<FontAwesomeIcon icon={faGem} className="valid_icon" />
+												<FontAwesomeIcon icon={faGem} className="invalid_icon" />
+												<FontAwesomeIcon icon={faGem} className="invalid_icon" />
 											</div>
 										</td>
 									</tr>
@@ -282,21 +270,9 @@ const Skill = () => {
 											<div className="level">
 												<FontAwesomeIcon icon={faGem} className="valid_icon" />
 												<FontAwesomeIcon icon={faGem} className="valid_icon" />
-												<FontAwesomeIcon icon={faGem} className="valid_icon" />
-												<FontAwesomeIcon icon={faGem} className="valid_icon" />
-												<FontAwesomeIcon icon={faGem} className="valid_icon" />
-											</div>
-										</td>
-									</tr>
-									<tr>
-										<td>Route53</td>
-										<td>
-											<div className="level">
-												<FontAwesomeIcon icon={faGem} className="valid_icon" />
-												<FontAwesomeIcon icon={faGem} className="valid_icon" />
-												<FontAwesomeIcon icon={faGem} className="valid_icon" />
-												<FontAwesomeIcon icon={faGem} className="valid_icon" />
-												<FontAwesomeIcon icon={faGem} className="valid_icon" />
+												<FontAwesomeIcon icon={faGem} className="invalid_icon" />
+												<FontAwesomeIcon icon={faGem} className="invalid_icon" />
+												<FontAwesomeIcon icon={faGem} className="invalid_icon" />
 											</div>
 										</td>
 									</tr>
@@ -317,7 +293,7 @@ const Skill = () => {
 												<FontAwesomeIcon icon={faGem} className="valid_icon" />
 												<FontAwesomeIcon icon={faGem} className="valid_icon" />
 												<FontAwesomeIcon icon={faGem} className="valid_icon" />
-												<FontAwesomeIcon icon={faGem} className="valid_icon" />
+												<FontAwesomeIcon icon={faGem} className="invalid_icon" />
 											</div>
 										</td>
 									</tr>

@@ -3,6 +3,8 @@ import { Swiper, SwiperSlide } from 'swiper/react';
 import { Navigation } from 'swiper/modules';
 import 'swiper/css';
 import 'swiper/css/navigation';
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faAngleRight } from "@fortawesome/free-solid-svg-icons";
 
 const Works = () => {
 	return (
@@ -20,7 +22,14 @@ const Works = () => {
 						<div className="project">
 							<div className="no_image">no image</div>
 							<div className="introduction">
-								プロジェクトの説明
+								<div className="service_title">
+									<div className="marker web_app">WEBアプリ</div>
+									<div>社内顧客管理WEBアプリケーション</div>
+								</div>
+								<div className="detail_link">
+									<div>詳細を見る</div>
+									<FontAwesomeIcon icon={faAngleRight} />
+								</div>
 							</div>
 						</div>
 					</SwiperSlide>
@@ -28,7 +37,14 @@ const Works = () => {
 						<div className="project">
 							<div className="no_image">no image</div>
 							<div className="introduction">
-								プロジェクトの説明
+								<div className="service_title">
+									<div className="marker web_app">WEBアプリ</div>
+									<div>治療院業界向けCRM 顧客別カスタム</div>
+								</div>
+								<div className="detail_link">
+									<div>詳細を見る</div>
+									<FontAwesomeIcon icon={faAngleRight} />
+								</div>
 							</div>
 						</div>
 					</SwiperSlide>
@@ -36,7 +52,14 @@ const Works = () => {
 						<div className="project">
 							<div className="no_image">no image</div>
 							<div className="introduction">
-								プロジェクトの説明
+								<div className="service_title">
+									<div className="marker web_app">WEBアプリ</div>
+									<div>治療院業界向け BtoB WEBサービス</div>
+								</div>
+								<div className="detail_link">
+									<div>詳細を見る</div>
+									<FontAwesomeIcon icon={faAngleRight} />
+								</div>
 							</div>
 						</div>
 					</SwiperSlide>
@@ -44,7 +67,29 @@ const Works = () => {
 						<div className="project">
 							<div className="no_image">no image</div>
 							<div className="introduction">
-								プロジェクトの説明
+								<div className="service_title">
+									<div className="marker web_site">WEBサイト</div>
+									<div>本ポートフォリオサイト</div>
+								</div>
+								<div className="detail_link">
+									<div>詳細を見る</div>
+									<FontAwesomeIcon icon={faAngleRight} />
+								</div>
+							</div>
+						</div>
+					</SwiperSlide>
+					<SwiperSlide>
+						<div className="project">
+							<div className="no_image">no image</div>
+							<div className="introduction">
+								<div className="service_title">
+									<div className="marker sample">サンプル</div>
+									<div>サンプルTODOアプリケーション</div>
+								</div>
+								<div className="detail_link">
+									<div>詳細を見る</div>
+									<FontAwesomeIcon icon={faAngleRight} />
+								</div>
 							</div>
 						</div>
 					</SwiperSlide>
