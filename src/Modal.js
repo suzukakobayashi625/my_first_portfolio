@@ -6,7 +6,7 @@ import { faXmark } from "@fortawesome/free-solid-svg-icons";
 const Modal = ({
   modalOpen,
   setModalOpen,
-  contents
+  children,
 }) => {
 
   const modalRef = useRef(null);
@@ -61,10 +61,7 @@ const Modal = ({
         <div className="close_btn" onClick={() => { setModalOpen(false); }}>
           <FontAwesomeIcon icon={faXmark} />
         </div>
-        <h2>モーダル</h2>
-        <button onClick={() => setModalOpen(false)}>
-          閉じる
-        </button>
+        {children}
       </div>
     </div>
   );

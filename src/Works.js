@@ -6,7 +6,7 @@ import 'swiper/css/navigation';
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faAngleRight } from "@fortawesome/free-solid-svg-icons";
 
-const Works = ({ setModalOpen }) => {
+const Works = ({ handleModalOpen }) => {
 
 	return (
 		<div className="content_3">
@@ -20,7 +20,7 @@ const Works = ({ setModalOpen }) => {
 					spaceBetween={16}
 				>
 					<SwiperSlide>
-						<div className="project">
+						<div className="project" onClick={() => handleModalOpen(1)}>
 							<div className="no_image">no image</div>
 							<div className="introduction">
 								<div className="service_title">
@@ -35,7 +35,7 @@ const Works = ({ setModalOpen }) => {
 						</div>
 					</SwiperSlide>
 					<SwiperSlide>
-						<div className="project" onClick={() => setModalOpen(true)}>
+						<div className="project">
 							<div className="no_image">no image</div>
 							<div className="introduction">
 								<div className="service_title">

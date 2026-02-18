@@ -322,9 +322,9 @@ $basic-5: #05abc9;
 
   .modal {
     background: white;
-    padding: 2rem;
-    border-radius: 8px;
-    width: 300px;
+    padding: 1.5rem;
+    border-radius: 0.4rem;
+    width: 50%;
     position: relative;
 
     transform: scale(0.8);
@@ -335,9 +335,47 @@ $basic-5: #05abc9;
       transform: scale(1);
       opacity: 1;
     }
+
+    .modal_contents_wrapper {
+      .border {
+        background-color: #14492364;
+        height: 1px;
+        width: 100%;
+      }
+
+      .project_title_wrapper {
+        display: flex;
+        flex-direction: column;
+        gap: 5px;
+
+        .kind {
+          display: flex;
+          align-items: center;
+          gap: 8px;
+
+          .marker {
+            background-color: #94d01327;
+            color: $basic-2;
+            font-size: 0.85rem;
+            padding: 2px 10px;
+            border-radius: 50px;
+          }
+
+          .devices {
+            color: gray;
+          }
+        }
+
+        .project_name {
+          color: $basic-2;
+          font-size: 1rem;
+          font-weight: 600;
+        }
+      }
+    }
   }
 
-  .close_btn{
+  .close_btn {
     position: absolute;
     top: -10px;
     right: -10px;
