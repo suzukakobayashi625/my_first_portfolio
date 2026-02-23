@@ -2,10 +2,12 @@ import "./scss/main.scss";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faGem } from "@fortawesome/free-solid-svg-icons";
 
-const Skill = () => {
+const Skill = ({
+	skillRef,
+}) => {
 	return (
-		<div className="content_4">
-			<div className="title">SKILL</div>
+		<div className="content_4" ref={skillRef}>
+			<div className="title">SKILLS</div>
 			<div className="skill_wrapper">
 				<div className="detail_wrapper">
 					<div className="sentence">

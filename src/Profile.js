@@ -1,9 +1,11 @@
 import "./scss/main.scss";
 import avaterImage from "../src/images/IMG_0411.PNG";
 
-const Profile = () => {
+const Profile = ({
+	profileRef,
+}) => {
 	return (
-		<div className="content_2">
+		<div className="content_2" ref={profileRef}>
 			<div className="title">PROFILE</div>
 			<div className="profile_wrapper">
 				<img src={avaterImage} className="avater_image" alt="avater" />

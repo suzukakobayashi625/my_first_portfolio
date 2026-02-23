@@ -5,11 +5,18 @@ import 'swiper/css';
 import 'swiper/css/navigation';
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faAngleRight } from "@fortawesome/free-solid-svg-icons";
+import CustomerManagementImage from "./images/customer_management_image.PNG";
+import CrmAppImage from "./images/crm_image.PNG";
+import RezeptImage from "./images/rezept_image.PNG";
+import PortfolioImage from "./images/IMG_0317.jpg";
 
-const Works = ({ handleModalOpen }) => {
+const Works = ({
+	handleModalOpen,
+	workRef,
+}) => {
 
 	return (
-		<div className="content_3">
+		<div className="content_3" ref={workRef}>
 			<div className="title">WORKS</div>
 			<div className="carousel_wrapper">
 				<Swiper
@@ -21,7 +28,7 @@ const Works = ({ handleModalOpen }) => {
 				>
 					<SwiperSlide>
 						<div className="project" onClick={() => handleModalOpen(1)}>
-							<div className="no_image">no image</div>
+							<img src={CustomerManagementImage} className="service_image" alt="顧客管理のイメージ画像" />
 							<div className="introduction">
 								<div className="service_title">
 									<div className="marker web_app">WEBアプリ</div>
@@ -35,8 +42,8 @@ const Works = ({ handleModalOpen }) => {
 						</div>
 					</SwiperSlide>
 					<SwiperSlide>
-						<div className="project">
-							<div className="no_image">no image</div>
+						<div className="project" onClick={() => handleModalOpen(2)}>
+							<img src={CrmAppImage} className="service_image" alt="CRMのイメージ画像" />
 							<div className="introduction">
 								<div className="service_title">
 									<div className="marker web_app">WEBアプリ</div>
@@ -50,8 +57,8 @@ const Works = ({ handleModalOpen }) => {
 						</div>
 					</SwiperSlide>
 					<SwiperSlide>
-						<div className="project">
-							<div className="no_image">no image</div>
+						<div className="project" onClick={() => handleModalOpen(3)}>
+							<img src={RezeptImage} className="service_image" alt="レセプト書類Ïのイメージ画像" />
 							<div className="introduction">
 								<div className="service_title">
 									<div className="marker web_app">WEBアプリ</div>
@@ -65,8 +72,8 @@ const Works = ({ handleModalOpen }) => {
 						</div>
 					</SwiperSlide>
 					<SwiperSlide>
-						<div className="project">
-							<div className="no_image">no image</div>
+						<div className="project" onClick={() => handleModalOpen(4)}>
+							<img src={PortfolioImage} className="service_image" alt="ポートフォリオのトップ画像" />
 							<div className="introduction">
 								<div className="service_title">
 									<div className="marker web_site">WEBサイト</div>
