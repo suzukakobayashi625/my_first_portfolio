@@ -1,6 +1,8 @@
 import Header from "./Header";
 import Main from "./Main";
 import { useRef } from "react";
+import { Routes, Route } from "react-router-dom";
+import SampleApp_1 from "./SampleApps/SampleApp_1";
 
 const App = () => {
 
@@ -12,20 +14,31 @@ const App = () => {
 
   return (
     <>
-      <Header
-        topRef={topRef}
-        profileRef={profileRef}
-        workRef={workRef}
-        skillRef={skillRef}
-        newsRef={newsRef}
-      />
-      <Main
-        topRef={topRef}
-        profileRef={profileRef}
-        workRef={workRef}
-        skillRef={skillRef}
-        newsRef={newsRef}
-      />
+      <Routes>
+        <Route
+          path="/"
+          element={
+            <>
+              <Header
+                topRef={topRef}
+                profileRef={profileRef}
+                workRef={workRef}
+                skillRef={skillRef}
+                newsRef={newsRef}
+              />
+              <Main
+                topRef={topRef}
+                profileRef={profileRef}
+                workRef={workRef}
+                skillRef={skillRef}
+                newsRef={newsRef}
+              />
+            </>
+          }
+        />
+        <Route path="/sample_app_1" element={<SampleApp_1 />} />
+        <Route path="*" element={<>Not Found</>} />
+      </Routes>
     </>
   );
 }

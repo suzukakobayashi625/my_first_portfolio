@@ -9,11 +9,14 @@ import CustomerManagementImage from "./images/customer_management_image.PNG";
 import CrmAppImage from "./images/crm_image.PNG";
 import RezeptImage from "./images/rezept_image.PNG";
 import PortfolioImage from "./images/IMG_0317.jpg";
+import { useNavigate } from "react-router-dom";
 
 const Works = ({
 	handleModalOpen,
 	workRef,
 }) => {
+
+	const navigate = useNavigate();
 
 	return (
 		<div className="content_3" ref={workRef}>
@@ -87,7 +90,7 @@ const Works = ({
 						</div>
 					</SwiperSlide>
 					<SwiperSlide>
-						<div className="project">
+						<div className="project" onClick={() => navigate("/sample_app_1")}>
 							<div className="no_image">no image</div>
 							<div className="introduction">
 								<div className="service_title">
