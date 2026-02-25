@@ -3,6 +3,7 @@ import Main from "./Main";
 import { useRef } from "react";
 import { Routes, Route } from "react-router-dom";
 import SampleApp_1 from "./SampleApps/SampleApp_1";
+import { ToastContainer, toast, Slide } from "react-toastify";
 
 const App = () => {
 
@@ -39,6 +40,19 @@ const App = () => {
         <Route path="/sample_app_1" element={<SampleApp_1 />} />
         <Route path="*" element={<>Not Found</>} />
       </Routes>
+      <ToastContainer
+        transition={Slide}
+        position="bottom-right"
+        autoClose={5000}
+        hideProgressBar
+        newestOnTop={false}
+        closeOnClick
+        rtl={false}
+        pauseOnFocusLoss
+        draggable
+        pauseOnHover
+        theme="light"
+      />
     </>
   );
 }
