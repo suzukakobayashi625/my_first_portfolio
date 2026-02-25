@@ -30,7 +30,9 @@ const SampleApp_1 = () => {
       back_ground: '#f9060f',
       name: '',
     },
+    solved: false,
   });
+  const [mode, setMode] = useState('create');
 
   const onSetColor = (form, color_1) => {
     const origin_obj = form == 'title' ?
@@ -115,6 +117,7 @@ const SampleApp_1 = () => {
         back_ground: '#f9060f',
         name: '',
       },
+      solved: false,
     });
   };
 
@@ -151,6 +154,7 @@ const SampleApp_1 = () => {
       add_badge: inputData.add_badge,
       badge_type: inputData.badge_type,
       badge_free_style: inputData.badge_free_style,
+      solved: false,
     };
 
     const added_list = [...todoList, newTodo];
@@ -160,6 +164,125 @@ const SampleApp_1 = () => {
     onResetForms();
     toast.success('TODOを作成しました');
     getTODO();
+  };
+
+  const onEdit = (index) => {
+    setMode('edit');
+
+    const target_data = todoList[index];
+
+    setInputData({
+      ...inputData,
+      title: target_data.title,
+      title_style: {
+        color: target_data.title_style.color,
+        bold: target_data.title_style.bold,
+      },
+      detail: target_data.detail,
+      detail_style: {
+        color: target_data.detail_style.color,
+        bold: target_data.detail_style.bold,
+      },
+      add_badge: target_data.add_badge,
+      badge_type: target_data.badge_type,
+      badge_free_style: {
+        color: target_data.badge_free_style.color,
+        back_ground: target_data.badge_free_style.back_ground,
+        name: target_data.badge_free_style.name,
+      },
+      solved: target_data.solved,
+    });
+  };
+
+  const handleSolved = (is_solved) => {
+  };
+
+  const DisplayTask = () => {
+    return (
+      <>
+        {todoList.map((d, index) => {
+          return (
+            <div
+              className="item_card"
+              key={index}
+              onClick={() => {
+                onEdit(index);
+              }}
+            >
+              <div className="card_left">
+                {d.title != '' ?
+                  <div className="title_wrapper">
+                    {d.add_badge ?
+                      <>
+                        {d.badge_type == 1 ?
+                          <div className="badge denger">重要</div>
+                          : d.badge_type == 2 ?
+                            <div className="badge gaisyutsu">外出</div>
+                            : d.badge_type == 3 ?
+                              <div className="badge new">NEW</div>
+                              : d.badge_type == 0 ?
+                                <div
+                                  className="badge"
+                                  style={{
+                                    backgroundColor: d.badge_free_style.back_ground,
+                                    color: d.badge_free_style.color,
+                                  }}
+                                >
+                                  {d.badge_free_style.name}
+                                </div>
+                                :
+                                <></>
+                        }
+                      </>
+                      :
+                      <></>
+                    }
+                    <div
+                      className="title"
+                      style={d.title_style?.bold ?
+                        { color: d.title_style?.color, fontWeight: "600" } :
+                        { color: d.title_style?.color }
+                      }
+                    >
+                      {d.title}
+                    </div>
+                  </div>
+                  :
+                  <></>
+                }
+                {d.detail != '' ?
+                  <div
+                    className="detail"
+                    style={d.detail_style?.bold ?
+                      { color: d.detail_style?.color, fontWeight: "600" } :
+                      { color: d.detail_style?.color }
+                    }
+                  >
+                    {d.detail}
+                  </div>
+                  :
+                  <></>
+                }
+              </div>
+              <div className="card_right">
+                <div className="task_wrapper">
+                  <div className="mini_title">完了</div>
+                  <label>
+                    <input
+                      type="checkbox"
+                      className="checkbox-1"
+                      name="task_solved"
+                      checked={d.solved}
+                      onChange={() => { handleSolved(d.solved) }}
+                    />
+                  </label>
+                </div>
+              </div>
+            </div>
+          );
+        })}
+      </>
+    );
   };
 
   useEffect(() => {
@@ -175,78 +298,78 @@ const SampleApp_1 = () => {
         </div>
         <div className="todo_list_wrapper">
           {todoList.length > 0 ?
-            <>
-              {todoList.map((d, index) => {
-                return (
-                  <div className="item_card" key={index}>
-                    <div className="card_left">
-                      {d.title != '' ?
-                        <div className="title_wrapper">
-                          {d.add_badge ?
-                            <>
-                              {d.badge_type == 1 ?
-                                <div className="badge denger">重要</div>
-                                : d.badge_type == 2 ?
-                                  <div className="badge gaisyutsu">外出</div>
-                                  : d.badge_type == 3 ?
-                                    <div className="badge new">NEW</div>
-                                    : d.badge_type == 0 ?
-                                      <div
-                                        className="badge"
-                                        style={{
-                                          backgroundColor: d.badge_free_style.back_ground,
-                                          color: d.badge_free_style.color,
-                                        }}
-                                      >
-                                        {d.badge_free_style.name}
-                                      </div>
-                                      :
-                                      <></>
-                              }
-                            </>
-                            :
-                            <></>
-                          }
-                          <div
-                            className="title"
-                            style={d.title_style?.bold ?
-                              { color: d.title_style?.color, fontWeight: "600" } :
-                              { color: d.title_style?.color }
-                            }
-                          >
-                            {d.title}
-                          </div>
-                        </div>
-                        :
-                        <></>
-                      }
-                      {d.detail != '' ?
-                        <div
-                          className="detail"
-                          style={d.detail_style?.bold ?
-                            { color: d.detail_style?.color, fontWeight: "600" } :
-                            { color: d.detail_style?.color }
-                          }
-                        >
-                          {d.detail}
-                        </div>
-                        :
-                        <></>
-                      }
-                    </div>
-                    <div className="card_right">
-                      <label className="checkbox-container">
-                        <input
-                          className="custom-checkbox"
-                          type="checkbox"
-                        />
-                        <span className="checkmark"></span>
-                      </label>
-                    </div>
-                  </div>
-                );
-              })}
-            </>
+            // <>
+            //   {todoList.map((d, index) => {
+            //     return (
+            //       <div className="item_card" key={index}>
+            //         <div className="card_left">
+            //           {d.title != '' ?
+            //             <div className="title_wrapper">
+            //               {d.add_badge ?
+            //                 <>
+            //                   {d.badge_type == 1 ?
+            //                     <div className="badge denger">重要</div>
+            //                     : d.badge_type == 2 ?
+            //                       <div className="badge gaisyutsu">外出</div>
+            //                       : d.badge_type == 3 ?
+            //                         <div className="badge new">NEW</div>
+            //                         : d.badge_type == 0 ?
+            //                           <div
+            //                             className="badge"
+            //                             style={{
+            //                               backgroundColor: d.badge_free_style.back_ground,
+            //                               color: d.badge_free_style.color,
+            //                             }}
+            //                           >
+            //                             {d.badge_free_style.name}
+            //                           </div>
+            //                           :
+            //                           <></>
+            //                   }
+            //                 </>
+            //                 :
+            //                 <></>
+            //               }
+            //               <div
+            //                 className="title"
+            //                 style={d.title_style?.bold ?
+            //                   { color: d.title_style?.color, fontWeight: "600" } :
+            //                   { color: d.title_style?.color }
+            //                 }
+            //               >
+            //                 {d.title}
+            //               </div>
+            //             </div>
+            //             :
+            //             <></>
+            //           }
+            //           {d.detail != '' ?
+            //             <div
+            //               className="detail"
+            //               style={d.detail_style?.bold ?
+            //                 { color: d.detail_style?.color, fontWeight: "600" } :
+            //                 { color: d.detail_style?.color }
+            //               }
+            //             >
+            //               {d.detail}
+            //             </div>
+            //             :
+            //             <></>
+            //           }
+            //         </div>
+            //         <div className="card_right">
+            //           <div className="task_wrapper">
+            //             <div className="mini_title">完了</div>
+            //             <label>
+            //               <input type="checkbox" className="checkbox-1" name="task_solved" />
+            //             </label>
+            //           </div>
+            //         </div>
+            //       </div>
+            //     );
+            //   })}
+            // </>
+            <DisplayTask />
             :
             <div className="no_data">
               <FontAwesomeIcon icon={faCircleXmark} />
@@ -263,7 +386,7 @@ const SampleApp_1 = () => {
         onSetName={onSetName}
         createTODO={createTODO}
       />
-    </div>
+    </div >
   );
 }
 
