@@ -1,4 +1,6 @@
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import "../../scss/sample_app.scss";
+import { faTrashCan } from "@fortawesome/free-solid-svg-icons";
 
 const RightContents = ({
   inputData,
@@ -7,11 +9,26 @@ const RightContents = ({
   onChengeBoldness,
   onSetName,
   createTODO,
+  mode,
+  onSumbitEdit,
+  handleModalOpen,
 }) => {
 
   return (
     <div className="side_menu">
-      <div className="sub_title">TODO新規作成</div>
+      {mode == 'create' ?
+        <div className="sub_title">TODO新規作成</div>
+        : mode == 'edit' ?
+          <div className="title_wrapper">
+            <div className="sub_title">TODO編集中</div>
+            <div className="delete_btn" onClick={() => { handleModalOpen(1); }}>
+              <FontAwesomeIcon icon={faTrashCan} />
+              <div>削除する</div>
+            </div>
+          </div>
+          :
+          <></>
+      }
       <div className="input_wrapper">
         <div className="input_form">
           <label>タイトル</label>
@@ -240,8 +257,14 @@ const RightContents = ({
           <></>
         }
       </div>
-      <button className="submit_btn" onClick={createTODO}>作成</button>
-    </div>
+      {mode == 'create' ?
+        <button className="submit_btn" onClick={createTODO}>作成</button>
+        : mode == 'edit' ?
+          <button className="submit_btn" onClick={onSumbitEdit}>保存</button>
+          :
+          <></>
+      }
+    </div >
   );
 }
 

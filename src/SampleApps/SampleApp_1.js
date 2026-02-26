@@ -1,12 +1,20 @@
-import { useState, useEffect } from "react";
+import { useState, useEffect, useRef, } from "react";
 import "../scss/sample_app.scss";
 import RightContents from "./App_1/RightContents";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import {
   faClipboardList,
   faCircleXmark,
+  faXmark,
+  faUpDown,
+  faTrashCan,
+  faBars,
 } from "@fortawesome/free-solid-svg-icons";
 import { toast } from "react-toastify";
+import AppModal_1 from "./App_1/AppModal_1";
+import SingleDeleteConfirm from "./App_1/ModalContents/SingleDeleteConfirm";
+import AllDeleteConfirm from "./App_1/ModalContents/AllDeleteConfirm";
+import Sortable from "sortablejs";
 
 const SampleApp_1 = () => {
 
@@ -33,6 +41,10 @@ const SampleApp_1 = () => {
     solved: false,
   });
   const [mode, setMode] = useState('create');
+  const [target, setTarget] = useState(null);
+  const [modalOpen, setModalOpen] = useState(false);
+  const [modalContentsId, setModalContentsId] = useState(null);
+  const listRef = useRef(null);
 
   const onSetColor = (form, color_1) => {
     const origin_obj = form == 'title' ?
@@ -144,30 +156,37 @@ const SampleApp_1 = () => {
       return;
     }
 
-    const newTodo = {
-      created: Date.now(),
-      updated: Date.now(),
-      title: inputData.title,
-      title_style: inputData.title_style,
-      detail: inputData.detail,
-      detail_style: inputData.detail_style,
-      add_badge: inputData.add_badge,
-      badge_type: inputData.badge_type,
-      badge_free_style: inputData.badge_free_style,
-      solved: false,
-    };
+    try {
+      const newTodo = {
+        updated: Date.now(),
+        title: inputData.title,
+        title_style: inputData.title_style,
+        detail: inputData.detail,
+        detail_style: inputData.detail_style,
+        add_badge: inputData.add_badge,
+        badge_type: inputData.badge_type,
+        badge_free_style: inputData.badge_free_style,
+        solved: false,
+      };
 
-    const added_list = [...todoList, newTodo];
+      const added_list = [newTodo, ...todoList,];
 
-    localStorage.setItem(STORAGE_KEY, JSON.stringify(added_list));
+      localStorage.setItem(STORAGE_KEY, JSON.stringify(added_list));
 
-    onResetForms();
-    toast.success('TODOを作成しました');
-    getTODO();
+      onResetForms();
+      toast.success('TODOを作成しました');
+      getTODO();
+
+    } catch (error) {
+      console.log(error);
+      toast.error('TODOの作成中にエラーが発生しました');
+      return;
+    }
   };
 
   const onEdit = (index) => {
     setMode('edit');
+    setTarget(index);
 
     const target_data = todoList[index];
 
@@ -194,88 +213,173 @@ const SampleApp_1 = () => {
     });
   };
 
-  const handleSolved = (is_solved) => {
+  const handleSolved = (is_solved, index) => {
+    const newTodo = todoList.map((todo, i) =>
+      i == index ? { ...todo, is_solved: is_solved ? false : true, } : todo
+    );
+
+    localStorage.setItem(STORAGE_KEY, JSON.stringify(newTodo));
+
+    getTODO();
+  };
+
+  const onSumbitEdit = () => {
+
+    if (inputData.title == '' && inputData.detail == '') {
+      toast.error('タイトルか詳細のいずれかを入力してください');
+      return;
+
+    } else if (inputData.add_badge && inputData.badge_type == 0 && inputData.badge_free_style.name == '') {
+      toast.error('バッヂの名前を入力してください');
+      return;
+    }
+
+    try {
+      const newTodo = {
+        updated: Date.now(),
+        title: inputData.title,
+        title_style: inputData.title_style,
+        detail: inputData.detail,
+        detail_style: inputData.detail_style,
+        add_badge: inputData.add_badge,
+        badge_type: inputData.badge_type,
+        badge_free_style: inputData.badge_free_style,
+        solved: inputData.solved,
+      };
+
+      const updated_arr = todoList.map((todo, index) =>
+        index == target ? newTodo : todo
+      );
+
+      localStorage.setItem(STORAGE_KEY, JSON.stringify(updated_arr));
+
+      onResetForms();
+      setTarget(null);
+      setMode('create');
+      toast.success('変更を保存しました');
+      getTODO();
+
+    } catch (error) {
+      console.log(error);
+      toast.error('TODOの保存中にエラーが発生しました');
+      return;
+    }
   };
 
   const DisplayTask = () => {
+
     return (
       <>
         {todoList.map((d, index) => {
           return (
-            <div
-              className="item_card"
-              key={index}
-              onClick={() => {
-                onEdit(index);
-              }}
-            >
-              <div className="card_left">
-                {d.title != '' ?
-                  <div className="title_wrapper">
-                    {d.add_badge ?
-                      <>
-                        {d.badge_type == 1 ?
-                          <div className="badge denger">重要</div>
-                          : d.badge_type == 2 ?
-                            <div className="badge gaisyutsu">外出</div>
-                            : d.badge_type == 3 ?
-                              <div className="badge new">NEW</div>
-                              : d.badge_type == 0 ?
-                                <div
-                                  className="badge"
-                                  style={{
-                                    backgroundColor: d.badge_free_style.back_ground,
-                                    color: d.badge_free_style.color,
-                                  }}
-                                >
-                                  {d.badge_free_style.name}
-                                </div>
-                                :
-                                <></>
+            <div key={index} className={mode == 'edit' && index == target ? "editting_card" : ""}>
+              {mode == 'edit' && index == target ?
+                <div className="editting_mode_wrapper">
+                  <div className="editting_title">編集中</div>
+                  <div
+                    className="cancel_btn"
+                    onClick={() => {
+                      setMode('create');
+                      setTarget(null);
+                      onResetForms();
+                    }}
+                  >
+                    <FontAwesomeIcon icon={faXmark} />
+                    <div>編集をやめる</div>
+                  </div>
+                </div>
+                :
+                <></>
+              }
+              <div
+                className={mode != 'sort' ? "item_card" : "item_card disabled_card"}
+                onClick={() => {
+                  if (mode != 'sort') {
+                    onEdit(index);
+                  }
+                }}
+              >
+                <div className="card_left">
+                  {d.title != '' ?
+                    <div className="title_wrapper">
+                      {d.add_badge ?
+                        <>
+                          {d.badge_type == 1 ?
+                            <div className="badge denger">重要</div>
+                            : d.badge_type == 2 ?
+                              <div className="badge gaisyutsu">外出</div>
+                              : d.badge_type == 3 ?
+                                <div className="badge new">NEW</div>
+                                : d.badge_type == 0 ?
+                                  <div
+                                    className="badge"
+                                    style={{
+                                      backgroundColor: d.badge_free_style.back_ground,
+                                      color: d.badge_free_style.color,
+                                    }}
+                                  >
+                                    {d.badge_free_style.name}
+                                  </div>
+                                  :
+                                  <></>
+                          }
+                        </>
+                        :
+                        <></>
+                      }
+                      <div
+                        className="title"
+                        style={d.title_style?.bold ?
+                          { color: d.title_style?.color, fontWeight: "600" } :
+                          { color: d.title_style?.color }
                         }
-                      </>
-                      :
-                      <></>
-                    }
+                      >
+                        {d.title}
+                      </div>
+                    </div>
+                    :
+                    <></>
+                  }
+                  {d.detail != '' ?
                     <div
-                      className="title"
-                      style={d.title_style?.bold ?
-                        { color: d.title_style?.color, fontWeight: "600" } :
-                        { color: d.title_style?.color }
+                      className="detail"
+                      style={d.detail_style?.bold ?
+                        { color: d.detail_style?.color, fontWeight: "600" } :
+                        { color: d.detail_style?.color }
                       }
                     >
-                      {d.title}
+                      {d.detail}
                     </div>
-                  </div>
-                  :
-                  <></>
-                }
-                {d.detail != '' ?
-                  <div
-                    className="detail"
-                    style={d.detail_style?.bold ?
-                      { color: d.detail_style?.color, fontWeight: "600" } :
-                      { color: d.detail_style?.color }
-                    }
-                  >
-                    {d.detail}
-                  </div>
-                  :
-                  <></>
-                }
-              </div>
-              <div className="card_right">
-                <div className="task_wrapper">
-                  <div className="mini_title">完了</div>
-                  <label>
-                    <input
-                      type="checkbox"
-                      className="checkbox-1"
-                      name="task_solved"
-                      checked={d.solved}
-                      onChange={() => { handleSolved(d.solved) }}
-                    />
-                  </label>
+                    :
+                    <></>
+                  }
+                </div>
+                <div className="card_right">
+                  {mode == 'create' ?
+                    <div className="task_wrapper">
+                      <div className="mini_title">完了</div>
+                      <label
+                        onClick={(e) => {
+                          e.stopPropagation();
+                          handleSolved(d.is_solved, index);
+                        }}
+                      >
+                        <input
+                          type="checkbox"
+                          className="checkbox-1"
+                          name="task_solved"
+                          checked={d.is_solved}
+                          onChange={() => { }}
+                        />
+                      </label>
+                    </div>
+                    : mode == 'sort' ?
+                      <div className="handle">
+                        <FontAwesomeIcon icon={faBars} />
+                      </div>
+                      :
+                      <></>
+                  }
                 </div>
               </div>
             </div>
@@ -285,9 +389,91 @@ const SampleApp_1 = () => {
     );
   };
 
+  const handleModalOpen = (id) => {
+    setModalContentsId(id);
+    setModalOpen(true);
+  };
+
+  const singleDeleteTODO = () => {
+    try {
+      const deletedTodo = todoList.filter((d, index) => index != target);
+
+      localStorage.setItem(STORAGE_KEY, JSON.stringify(deletedTodo));
+
+      onResetForms();
+      setTarget(null);
+      setMode('create');
+      setModalOpen(false);
+      toast.success('TODOを削除しました');
+      getTODO();
+
+    } catch (error) {
+      console.log(error);
+      toast.error('TODOの削除中にエラーが発生しました');
+      return;
+    }
+  };
+
+  const ModalContents = () => {
+    if (modalContentsId == null) {
+      return (<></>);
+    }
+
+    if (modalContentsId == 1) {
+      return (
+        <SingleDeleteConfirm
+          setModalOpen={setModalOpen}
+          singleDeleteTODO={singleDeleteTODO}
+        />
+      );
+    } else if (modalContentsId == 2) {
+      return (
+        <AllDeleteConfirm
+          setModalOpen={setModalOpen}
+          allDeleteTODO={allDeleteTODO}
+        />
+      );
+    }
+  };
+
+  const allDeleteTODO = () => {
+    try {
+      const deletedTodo = todoList.filter((d) => !d.is_solved);
+
+      localStorage.setItem(STORAGE_KEY, JSON.stringify(deletedTodo));
+
+      onResetForms();
+      setTarget(null);
+      setMode('create');
+      setModalOpen(false);
+      toast.success('TODOを削除しました');
+      getTODO();
+
+    } catch (error) {
+      console.log(error);
+      toast.error('TODOの削除中にエラーが発生しました');
+      return;
+    }
+  };
+
   useEffect(() => {
     getTODO();
   }, []);
+
+  useEffect(() => {
+    const sortable = Sortable.create(listRef.current, {
+      animation: 200,
+      handle: ".handle", // ハンドル指定可能
+      onEnd: (evt) => {
+        const newList = [...todoList];
+        const [movedItem] = newList.splice(evt.oldIndex, 1);
+        newList.splice(evt.newIndex, 0, movedItem);
+        setTodoList(newList);
+      },
+    });
+
+    return () => sortable.destroy();
+  }, [todoList]);
 
   return (
     <div className="sample_1_container">
@@ -296,86 +482,39 @@ const SampleApp_1 = () => {
           <FontAwesomeIcon icon={faClipboardList} />
           <div>Sample TODO App</div>
         </div>
-        <div className="todo_list_wrapper">
-          {todoList.length > 0 ?
-            // <>
-            //   {todoList.map((d, index) => {
-            //     return (
-            //       <div className="item_card" key={index}>
-            //         <div className="card_left">
-            //           {d.title != '' ?
-            //             <div className="title_wrapper">
-            //               {d.add_badge ?
-            //                 <>
-            //                   {d.badge_type == 1 ?
-            //                     <div className="badge denger">重要</div>
-            //                     : d.badge_type == 2 ?
-            //                       <div className="badge gaisyutsu">外出</div>
-            //                       : d.badge_type == 3 ?
-            //                         <div className="badge new">NEW</div>
-            //                         : d.badge_type == 0 ?
-            //                           <div
-            //                             className="badge"
-            //                             style={{
-            //                               backgroundColor: d.badge_free_style.back_ground,
-            //                               color: d.badge_free_style.color,
-            //                             }}
-            //                           >
-            //                             {d.badge_free_style.name}
-            //                           </div>
-            //                           :
-            //                           <></>
-            //                   }
-            //                 </>
-            //                 :
-            //                 <></>
-            //               }
-            //               <div
-            //                 className="title"
-            //                 style={d.title_style?.bold ?
-            //                   { color: d.title_style?.color, fontWeight: "600" } :
-            //                   { color: d.title_style?.color }
-            //                 }
-            //               >
-            //                 {d.title}
-            //               </div>
-            //             </div>
-            //             :
-            //             <></>
-            //           }
-            //           {d.detail != '' ?
-            //             <div
-            //               className="detail"
-            //               style={d.detail_style?.bold ?
-            //                 { color: d.detail_style?.color, fontWeight: "600" } :
-            //                 { color: d.detail_style?.color }
-            //               }
-            //             >
-            //               {d.detail}
-            //             </div>
-            //             :
-            //             <></>
-            //           }
-            //         </div>
-            //         <div className="card_right">
-            //           <div className="task_wrapper">
-            //             <div className="mini_title">完了</div>
-            //             <label>
-            //               <input type="checkbox" className="checkbox-1" name="task_solved" />
-            //             </label>
-            //           </div>
-            //         </div>
-            //       </div>
-            //     );
-            //   })}
-            // </>
-            <DisplayTask />
-            :
-            <div className="no_data">
-              <FontAwesomeIcon icon={faCircleXmark} />
-              <div>タスクがありません</div>
+        <div className="contents_wrapper">
+          <div className="option_wrapper">
+            <div className="hidden_check">
+              <label>
+                <input
+                  type="checkbox"
+                  className="checkbox-1"
+                  name="hidden_check"
+                />
+                <div className="sentence">完了済みのタスクは表示しない</div>
+              </label>
             </div>
-          }
+            <div className="btn_wrapper">
+              <div className="sort_btn" onClick={() => { setMode('sort'); }}>
+                <FontAwesomeIcon icon={faUpDown} />
+                <div>並び替え</div>
+              </div>
+              <div className="all_delete_btn" onClick={() => { handleModalOpen(2); }}>
+                <FontAwesomeIcon icon={faTrashCan} />
+                <div>完了済みのTODOを一括削除</div>
+              </div>
+            </div>
+          </div>
+          <div className="todo_list_wrapper" ref={listRef}>
+            {todoList.length > 0 ?
+              <DisplayTask />
+              :
+              <div className="no_data">
+                <FontAwesomeIcon icon={faCircleXmark} />
+                <div>タスクがありません</div>
+              </div>
+            }
+          </div>
         </div>
       </div>
       <RightContents
@@ -385,7 +524,16 @@ const SampleApp_1 = () => {
         onChengeBoldness={onChengeBoldness}
         onSetName={onSetName}
         createTODO={createTODO}
+        mode={mode}
+        onSumbitEdit={onSumbitEdit}
+        handleModalOpen={handleModalOpen}
       />
+      <AppModal_1
+        modalOpen={modalOpen}
+        setModalOpen={setModalOpen}
+      >
+        <ModalContents />
+      </AppModal_1>
     </div >
   );
 }
