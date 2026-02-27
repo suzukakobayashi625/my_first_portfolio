@@ -4,7 +4,7 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faGem } from "@fortawesome/free-solid-svg-icons";
 
 const MobileSkills = ({
-  // skillRef,
+  skillRef,
 }) => {
 
   const [activeSelect, setActiveSelect] = useState(1);
@@ -30,7 +30,7 @@ const MobileSkills = ({
   };
 
   return (
-    <div className="content_4">
+    <div className="content_4" ref={skillRef}>
       <div className="title">SKILLS</div>
       <div className="skill_wrapper">
         <div className="detail_wrapper">

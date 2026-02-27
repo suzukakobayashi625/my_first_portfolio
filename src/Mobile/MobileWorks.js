@@ -13,14 +13,14 @@ import SampleAppImage_1 from "../../src/images/sample_app_1_image.png";
 import { useNavigate, Link } from "react-router-dom";
 
 const MobileWorks = ({
-	// handleModalOpen,
-	// workRef,
+	handleModalOpen,
+	workRef,
 }) => {
 
 	const navigate = useNavigate();
 
 	return (
-		<div className="content_3">
+		<div className="content_3" ref={workRef}>
 			<div className="title">WORKS</div>
 			<div className="carousel_wrapper">
 				<Swiper
@@ -29,10 +29,10 @@ const MobileWorks = ({
 					slidesPerView={1}      // ← 常に3つ表示
 					slidesPerGroup={1}     // ← 1つずつ動く
 					spaceBetween={20}
-          loop={true}
+					loop={true}
 				>
 					<SwiperSlide>
-						<div className="project">
+						<div className="project" onClick={() => handleModalOpen(1)}>
 							<img src={CustomerManagementImage} className="service_image" alt="顧客管理のイメージ画像" />
 							<div className="introduction">
 								<div className="service_title">
@@ -47,7 +47,7 @@ const MobileWorks = ({
 						</div>
 					</SwiperSlide>
 					<SwiperSlide>
-						<div className="project">
+						<div className="project" onClick={() => handleModalOpen(2)}>
 							<img src={CrmAppImage} className="service_image" alt="CRMのイメージ画像" />
 							<div className="introduction">
 								<div className="service_title">
@@ -62,7 +62,7 @@ const MobileWorks = ({
 						</div>
 					</SwiperSlide>
 					<SwiperSlide>
-						<div className="project">
+						<div className="project" onClick={() => handleModalOpen(3)}>
 							<img src={RezeptImage} className="service_image" alt="レセプト書類Ïのイメージ画像" />
 							<div className="introduction">
 								<div className="service_title">
@@ -77,7 +77,7 @@ const MobileWorks = ({
 						</div>
 					</SwiperSlide>
 					<SwiperSlide>
-						<div className="project">
+						<div className="project" onClick={() => handleModalOpen(4)}>
 							<img src={PortfolioImage} className="service_image" alt="ポートフォリオのトップ画像" />
 							<div className="introduction">
 								<div className="service_title">

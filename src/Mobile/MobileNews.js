@@ -3,7 +3,7 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faCircleXmark, faGem } from "@fortawesome/free-solid-svg-icons";
 
 const MobileNews = ({
-  // newsRef,
+  newsRef,
 }) => {
 
   const news = [
@@ -14,7 +14,7 @@ const MobileNews = ({
   ];
 
   return (
-    <div className="content_5">
+    <div className="content_5" ref={newsRef}>
       <div className="title">NEWS</div>
       <div className="news_wrapper">
         {news.length > 0 ?

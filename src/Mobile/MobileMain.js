@@ -5,54 +5,73 @@ import MobileProfile from "./MobileProfile";
 import MobileWorks from "./MobileWorks";
 import MobileSkills from "./MobileSkills";
 import MobileNews from "./MobileNews";
+import MobileModal from "./MobileModal";
+import MobileContents_1 from "./ModalContents/MobileContents_1";
+import MobileContents_2 from "./ModalContents/MobileContents_2";
 
 const MobileMain = ({
+  topRef,
+  profileRef,
+  workRef,
+  skillRef,
+  newsRef,
 }) => {
-  // const [modalOpen, setModalOpen] = useState(false);
-  // const [modalContentsId, setModalContentsId] = useState(null);
+  const [modalOpen, setModalOpen] = useState(false);
+  const [modalContentsId, setModalContentsId] = useState(null);
 
-  // const handleModalOpen = (id) => {
-  //   setModalContentsId(id);
-  //   setModalOpen(true);
-  // };
+  const handleModalOpen = (id) => {
+    setModalContentsId(id);
+    setModalOpen(true);
+  };
 
-  // const ModalContents = () => {
-  //   if (modalContentsId == null) {
-  //     return (<></>);
-  //   }
+  const ModalContents = () => {
+    if (modalContentsId == null) {
+      return (<></>);
+    }
 
-  //   if (modalContentsId == 1) {
-  //     return (
-  //       <Contents_1 />
-  //     );
-  //   } else if (modalContentsId == 2) {
-  //     return (
-  //       <Contents_2 />
-  //     );
-  //   } else if (modalContentsId == 3) {
-  //     return (
-  //       <Contents_3 />
-  //     );
-  //   } else if (modalContentsId == 4) {
-  //     return (
-  //       <Contents_4 />
-  //     );
-  //   }
-  // };
+    if (modalContentsId == 1) {
+      return (
+        <MobileContents_1 />
+      );
+    } else if (modalContentsId == 2) {
+      return (
+        <MobileContents_2 />
+      );
+    } 
+    
+    // else if (modalContentsId == 3) {
+    //   return (
+    //     <Contents_3 />
+    //   );
+    // } else if (modalContentsId == 4) {
+    //   return (
+    //     <Contents_4 />
+    //   );
+    // }
+  };
 
   return (
     <>
       <div className="mobile_main_container">
-        <div className="content_1">
+        <div className="content_1" ref={topRef}>
           <img src={topImage} className="top_image" alt="top_image" />
           <div className="image_filter" />
           <div className="main_title">S.Kobayashi<br />Portfolio</div>
         </div>
-        <MobileProfile />
-        <MobileWorks />
-        <MobileSkills />
-        <MobileNews />
+        <MobileProfile profileRef={profileRef} />
+        <MobileWorks
+          handleModalOpen={handleModalOpen}
+          workRef={workRef}
+        />
+        <MobileSkills skillRef={skillRef} />
+        <MobileNews newsRef={newsRef} />
       </div>
+      <MobileModal
+        modalOpen={modalOpen}
+        setModalOpen={setModalOpen}
+      >
+        <ModalContents />
+      </MobileModal>
     </>
   );
 }

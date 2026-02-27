@@ -892,3 +892,163 @@ $basic-5: #05abc9;
     }
   }
 }
+
+.mobile-modal-overlay {
+  position: fixed;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.5);
+  z-index: 1000;
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 0.3s ease;
+
+  &.active {
+    opacity: 1;
+    pointer-events: auto;
+  }
+
+  .mobile-modal {
+    background: white;
+    padding: 1.5rem;
+    border-radius: 0.4rem;
+    width: 75%;
+    position: relative;
+    transform: scale(0.8);
+    opacity: 0;
+    transition: all 0.3s ease;
+
+    &.active {
+      transform: scale(1);
+      opacity: 1;
+    }
+
+    .modal_contents_wrapper {
+      max-height: 50vh;
+      overflow-y: auto;
+
+      .scroll_wrapper {
+        display: flex;
+        flex-direction: column;
+        gap: 8px;
+
+        .border {
+          background-color: #14492364;
+          height: 1px;
+          width: 100%;
+        }
+
+        .project_title_wrapper {
+          display: flex;
+          flex-direction: column;
+          gap: 8px;
+
+          .kind {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+
+            .marker {
+              font-size: 0.8rem;
+              padding: 2px 10px;
+              border-radius: 50px;
+            }
+
+            .web_app {
+              background-color: #94d01327;
+              color: $basic-2;
+            }
+
+            .web_site {
+              background-color: #d6845444;
+              color: $basic-4;
+            }
+
+            .devices {
+              color: gray;
+              display: flex;
+              align-items: center;
+              gap: 5px;
+            }
+          }
+
+          .project_name {
+            color: $basic-2;
+            font-size: 0.9rem;
+            font-weight: 600;
+          }
+        }
+
+        .project_detail_wrapper {
+          display: flex;
+          flex-direction: column;
+          gap: 8px;
+
+          .products {
+            font-size: 0.8rem;
+            border-collapse: collapse;
+            table-layout: fixed;
+            width: 100%;
+
+            td {
+              padding: 2px 8px;
+
+              &:first-child {
+                background-color: $basic-2;
+                color: white;
+                white-space: nowrap;
+                width: 20%;
+                text-align: center;
+              }
+
+              &:last-child {
+                color: $basic-2;
+                word-break: break-word;
+                overflow-wrap: break-word;
+              }
+            }
+          }
+
+          .project_details {
+            font-size: 0.9rem;
+            color: $basic-2;
+            display: flex;
+            flex-direction: column;
+            gap: 8px;
+            font-size: 0.8rem;
+
+            .sub_title {
+              font-weight: 600;
+              font-size: 0.9rem;
+            }
+
+            .attention {
+              font-size: 0.8rem;
+              color: rgb(95, 95, 95);
+            }
+          }
+        }
+      }
+    }
+  }
+
+  .close_btn {
+    position: absolute;
+    top: -10px;
+    right: -10px;
+    background-color: $basic-2;
+    color: white;
+    width: 35px;
+    height: 35px;
+    border-radius: 50px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    border: 2px solid white;
+  }
+}

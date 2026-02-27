@@ -58,8 +58,20 @@ const App = () => {
               </>
               :
               <>
-                <MobileHeader />
-                <MobileMain />
+                <MobileHeader
+                  topRef={topRef}
+                  profileRef={profileRef}
+                  workRef={workRef}
+                  skillRef={skillRef}
+                  newsRef={newsRef}
+                />
+                <MobileMain
+                  topRef={topRef}
+                  profileRef={profileRef}
+                  workRef={workRef}
+                  skillRef={skillRef}
+                  newsRef={newsRef}
+                />
               </>
           }
         />
