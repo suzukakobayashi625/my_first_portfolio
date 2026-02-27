@@ -720,7 +720,7 @@ $basic-7: #34ddee;
   }
 }
 
-.modal-overlay {
+.app-modal-overlay {
   position: fixed;
   inset: 0;
   background: rgba(0, 0, 0, 0.5);
@@ -739,7 +739,7 @@ $basic-7: #34ddee;
     pointer-events: auto;
   }
 
-  .modal {
+  .app-modal {
     background: white;
     padding: 1.5rem;
     border-radius: 0.4rem;
@@ -809,5 +809,6 @@ $basic-7: #34ddee;
     align-items: center;
     justify-content: center;
     cursor: pointer;
+    border: 2px solid white;
   }
 }

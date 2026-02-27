@@ -9,7 +9,8 @@ import CustomerManagementImage from "./images/customer_management_image.PNG";
 import CrmAppImage from "./images/crm_image.PNG";
 import RezeptImage from "./images/rezept_image.PNG";
 import PortfolioImage from "./images/IMG_0317.jpg";
-import { useNavigate } from "react-router-dom";
+import SampleAppImage_1 from "./images/sample_app_1_image.png";
+import { useNavigate, Link } from "react-router-dom";
 
 const Works = ({
 	handleModalOpen,
@@ -90,19 +91,26 @@ const Works = ({
 						</div>
 					</SwiperSlide>
 					<SwiperSlide>
-						<div className="project" onClick={() => navigate("/sample_app_1")}>
-							<div className="no_image">no image</div>
-							<div className="introduction">
-								<div className="service_title">
-									<div className="marker sample">サンプル</div>
-									<div>サンプルTODOアプリケーション</div>
-								</div>
-								<div className="detail_link">
-									<div>詳細を見る</div>
-									<FontAwesomeIcon icon={faAngleRight} />
+						<Link
+							to="/sample_app_1"
+							target="_blank"
+							rel="noopener noreferrer"
+							style={{ textDecoration: "none", color: "inherit" }}
+						>
+							<div className="project">
+								<img src={SampleAppImage_1} className="service_image" alt="サンプルアプリ１のイメージ画像" />
+								<div className="introduction">
+									<div className="service_title">
+										<div className="marker sample">サンプル</div>
+										<div>サンプルTODOアプリケーション</div>
+									</div>
+									<div className="detail_link">
+										<div>詳細を見る</div>
+										<FontAwesomeIcon icon={faAngleRight} />
+									</div>
 								</div>
 							</div>
-						</div>
+						</Link>
 					</SwiperSlide>
 				</Swiper>
 			</div>

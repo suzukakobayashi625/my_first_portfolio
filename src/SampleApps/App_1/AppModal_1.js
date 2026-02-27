@@ -53,11 +53,11 @@ const AppModal_1 = ({
 
   return (
     <div
-      className={`modal-overlay ${modalOpen ? "active" : ""}`}
-      id="modal-overlay"
+      className={`app-modal-overlay ${modalOpen ? "active" : ""}`}
+      id="app-modal-overlay"
       onClick={(e) => e.stopPropagation()}
     >
-      <div className={`modal ${modalOpen ? "active" : ""}`} ref={modalRef}>
+      <div className={`app-modal ${modalOpen ? "active" : ""}`} ref={modalRef}>
         <div className="close_btn" onClick={() => { setModalOpen(false); }}>
           <FontAwesomeIcon icon={faXmark} />
         </div>

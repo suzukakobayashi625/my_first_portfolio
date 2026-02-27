@@ -2,7 +2,8 @@ import "./scss/main.scss";
 import { useState } from "react";
 import Profile from "./Profile";
 import Works from "./Works";
-import Skill from "./Skill";
+import Skills from "./Skills";
+import News from "./News";
 import Modal from "./Modal";
 import topImage from "../src/images/IMG_0317.jpg";
 import Contents_1 from "./ModalContents/Contents_1";
@@ -62,10 +63,8 @@ const Main = ({
           handleModalOpen={handleModalOpen}
           workRef={workRef}
         />
-        <Skill skillRef={skillRef} />
-        <div className="content_5">
-          <div>nanka contact info</div>
-        </div>
+        <Skills skillRef={skillRef} />
+        <News newsRef={newsRef} />
       </div>
       <Modal
         modalOpen={modalOpen}

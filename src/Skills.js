@@ -2,7 +2,7 @@ import "./scss/main.scss";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faGem } from "@fortawesome/free-solid-svg-icons";
 
-const Skill = ({
+const Skills = ({
 	skillRef,
 }) => {
 	return (
@@ -333,4 +333,4 @@ const Skill = ({
 	);
 }
 
-export default Skill;
+export default Skills;
