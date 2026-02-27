@@ -9,6 +9,7 @@ import {
   faUpDown,
   faTrashCan,
   faBars,
+  faCheck,
 } from "@fortawesome/free-solid-svg-icons";
 import { toast } from "react-toastify";
 import AppModal_1 from "./App_1/AppModal_1";
@@ -38,12 +39,13 @@ const SampleApp_1 = () => {
       back_ground: '#f9060f',
       name: '',
     },
-    solved: false,
+    is_solved: false,
   });
   const [mode, setMode] = useState('create');
   const [target, setTarget] = useState(null);
   const [modalOpen, setModalOpen] = useState(false);
   const [modalContentsId, setModalContentsId] = useState(null);
+  const [isDisplaySolvedTask, setIsDisplaySolvedTask] = useState(true);
   const listRef = useRef(null);
 
   const onSetColor = (form, color_1) => {
@@ -129,7 +131,7 @@ const SampleApp_1 = () => {
         back_ground: '#f9060f',
         name: '',
       },
-      solved: false,
+      is_solved: false,
     });
   };
 
@@ -140,7 +142,12 @@ const SampleApp_1 = () => {
 
 
     if (data != null) {
-      setTodoList(JSON.parse(data));
+      if (isDisplaySolvedTask) {
+        setTodoList(JSON.parse(data));
+      } else {
+        const filteredTodo = JSON.parse(data).filter((d) => !d.is_solved);
+        setTodoList(filteredTodo);
+      }
     } else {
       setTodoList([]);
     }
@@ -166,7 +173,7 @@ const SampleApp_1 = () => {
         add_badge: inputData.add_badge,
         badge_type: inputData.badge_type,
         badge_free_style: inputData.badge_free_style,
-        solved: false,
+        is_solved: false,
       };
 
       const added_list = [newTodo, ...todoList,];
@@ -209,7 +216,7 @@ const SampleApp_1 = () => {
         back_ground: target_data.badge_free_style.back_ground,
         name: target_data.badge_free_style.name,
       },
-      solved: target_data.solved,
+      is_solved: target_data.is_solved,
     });
   };
 
@@ -244,7 +251,7 @@ const SampleApp_1 = () => {
         add_badge: inputData.add_badge,
         badge_type: inputData.badge_type,
         badge_free_style: inputData.badge_free_style,
-        solved: inputData.solved,
+        is_solved: inputData.is_solved,
       };
 
       const updated_arr = todoList.map((todo, index) =>
@@ -292,95 +299,159 @@ const SampleApp_1 = () => {
                 <></>
               }
               <div
-                className={mode != 'sort' ? "item_card" : "item_card disabled_card"}
+                className={mode == 'sort' || (mode == 'edit' && index == target) ?
+                  "item_card disabled_card" : "item_card"}
                 onClick={() => {
-                  if (mode != 'sort') {
+                  if (mode != 'sort' && index != target) {
                     onEdit(index);
                   }
                 }}
               >
-                <div className="card_left">
-                  {d.title != '' ?
-                    <div className="title_wrapper">
-                      {d.add_badge ?
-                        <>
-                          {d.badge_type == 1 ?
-                            <div className="badge denger">重要</div>
-                            : d.badge_type == 2 ?
-                              <div className="badge gaisyutsu">外出</div>
-                              : d.badge_type == 3 ?
-                                <div className="badge new">NEW</div>
-                                : d.badge_type == 0 ?
-                                  <div
-                                    className="badge"
-                                    style={{
-                                      backgroundColor: d.badge_free_style.back_ground,
-                                      color: d.badge_free_style.color,
-                                    }}
-                                  >
-                                    {d.badge_free_style.name}
-                                  </div>
-                                  :
-                                  <></>
-                          }
-                        </>
-                        :
-                        <></>
-                      }
-                      <div
-                        className="title"
-                        style={d.title_style?.bold ?
-                          { color: d.title_style?.color, fontWeight: "600" } :
-                          { color: d.title_style?.color }
+                {mode == 'edit' && index == target ?
+                  <div className="card_left">
+                    {inputData.title != '' ?
+                      <div className="title_wrapper">
+                        {inputData.add_badge ?
+                          <>
+                            {inputData.badge_type == 1 ?
+                              <div className="badge denger">重要</div>
+                              : inputData.badge_type == 2 ?
+                                <div className="badge gaisyutsu">外出</div>
+                                : inputData.badge_type == 3 ?
+                                  <div className="badge new">NEW</div>
+                                  : inputData.badge_type == 0 ?
+                                    <div
+                                      className="badge"
+                                      style={{
+                                        backgroundColor: inputData.badge_free_style.back_ground,
+                                        color: inputData.badge_free_style.color,
+                                      }}
+                                    >
+                                      {inputData.badge_free_style.name}
+                                    </div>
+                                    :
+                                    <></>
+                            }
+                          </>
+                          :
+                          <></>
                         }
-                      >
-                        {d.title}
-                      </div>
-                    </div>
-                    :
-                    <></>
-                  }
-                  {d.detail != '' ?
-                    <div
-                      className="detail"
-                      style={d.detail_style?.bold ?
-                        { color: d.detail_style?.color, fontWeight: "600" } :
-                        { color: d.detail_style?.color }
-                      }
-                    >
-                      {d.detail}
-                    </div>
-                    :
-                    <></>
-                  }
-                </div>
-                <div className="card_right">
-                  {mode == 'create' ?
-                    <div className="task_wrapper">
-                      <div className="mini_title">完了</div>
-                      <label
-                        onClick={(e) => {
-                          e.stopPropagation();
-                          handleSolved(d.is_solved, index);
-                        }}
-                      >
-                        <input
-                          type="checkbox"
-                          className="checkbox-1"
-                          name="task_solved"
-                          checked={d.is_solved}
-                          onChange={() => { }}
-                        />
-                      </label>
-                    </div>
-                    : mode == 'sort' ?
-                      <div className="handle">
-                        <FontAwesomeIcon icon={faBars} />
+                        <div
+                          className="title"
+                          style={inputData.title_style?.bold ?
+                            { color: inputData.title_style?.color, fontWeight: "600" } :
+                            { color: inputData.title_style?.color }
+                          }
+                        >
+                          {inputData.title}
+                        </div>
                       </div>
                       :
                       <></>
-                  }
-                </div>
+                    }
+                    {inputData.detail != '' ?
+                      <div
+                        className="detail"
+                        style={inputData.detail_style?.bold ?
+                          { color: inputData.detail_style?.color, fontWeight: "600" } :
+                          { color: inputData.detail_style?.color }
+                        }
+                      >
+                        {inputData.detail}
+                      </div>
+                      :
+                      <></>
+                    }
+                  </div>
+                  :
+                  <div className="card_left">
+                    {d.title != '' ?
+                      <div className="title_wrapper">
+                        {d.add_badge ?
+                          <>
+                            {d.badge_type == 1 ?
+                              <div className="badge denger">重要</div>
+                              : d.badge_type == 2 ?
+                                <div className="badge gaisyutsu">外出</div>
+                                : d.badge_type == 3 ?
+                                  <div className="badge new">NEW</div>
+                                  : d.badge_type == 0 ?
+                                    <div
+                                      className="badge"
+                                      style={{
+                                        backgroundColor: d.badge_free_style.back_ground,
+                                        color: d.badge_free_style.color,
+                                      }}
+                                    >
+                                      {d.badge_free_style.name}
+                                    </div>
+                                    :
+                                    <></>
+                            }
+                          </>
+                          :
+                          <></>
+                        }
+                        <div
+                          className="title"
+                          style={d.title_style?.bold ?
+                            { color: d.title_style?.color, fontWeight: "600" } :
+                            { color: d.title_style?.color }
+                          }
+                        >
+                          {d.title}
+                        </div>
+                      </div>
+                      :
+                      <></>
+                    }
+                    {d.detail != '' ?
+                      <div
+                        className="detail"
+                        style={d.detail_style?.bold ?
+                          { color: d.detail_style?.color, fontWeight: "600" } :
+                          { color: d.detail_style?.color }
+                        }
+                      >
+                        {d.detail}
+                      </div>
+                      :
+                      <></>
+                    }
+                  </div>
+                }
+                {mode == 'edit' && index == target ?
+                  <div className="card_right">
+                  </div>
+                  :
+                  <div className="card_right">
+                    {mode == 'create' ?
+                      <div className="task_wrapper">
+                        <div className="mini_title">完了</div>
+                        <label
+                          onClick={(e) => {
+                            e.stopPropagation();
+                            handleSolved(d.is_solved, index);
+                          }}
+                        >
+                          <input
+                            type="checkbox"
+                            className="checkbox-1"
+                            name="task_solved"
+                            checked={d.is_solved}
+                            onChange={() => { }}
+                          />
+                        </label>
+                      </div>
+                      : mode == 'sort' ?
+                        <div className="handle">
+                          <FontAwesomeIcon icon={faBars} />
+                        </div>
+                        :
+                        <></>
+                    }
+                  </div>
+                }
               </div>
             </div>
           );
@@ -456,9 +527,24 @@ const SampleApp_1 = () => {
     }
   };
 
+  const onSaveSort = () => {
+    try {
+      localStorage.setItem(STORAGE_KEY, JSON.stringify(todoList));
+
+      toast.success('並び順を保存しました');
+      setMode('create');
+      getTODO();
+
+    } catch (error) {
+      console.log(error);
+      toast.error('並び順の保存中にエラーが発生しました');
+      return;
+    }
+  };
+
   useEffect(() => {
     getTODO();
-  }, []);
+  }, [isDisplaySolvedTask]);
 
   useEffect(() => {
     const sortable = Sortable.create(listRef.current, {
@@ -483,29 +569,145 @@ const SampleApp_1 = () => {
           <div>Sample TODO App</div>
         </div>
         <div className="contents_wrapper">
-          <div className="option_wrapper">
-            <div className="hidden_check">
-              <label>
-                <input
-                  type="checkbox"
-                  className="checkbox-1"
-                  name="hidden_check"
-                />
-                <div className="sentence">完了済みのタスクは表示しない</div>
-              </label>
-            </div>
-            <div className="btn_wrapper">
-              <div className="sort_btn" onClick={() => { setMode('sort'); }}>
-                <FontAwesomeIcon icon={faUpDown} />
-                <div>並び替え</div>
+          {mode != 'sort' ?
+            <div className="option_wrapper">
+              <div className="hidden_check">
+                <label>
+                  <input
+                    type="checkbox"
+                    className="checkbox-1"
+                    name="hidden_check"
+                    value={isDisplaySolvedTask}
+                    onChange={() => { setIsDisplaySolvedTask(!isDisplaySolvedTask); }}
+                  />
+                  <div className="sentence">完了済みのタスクは表示しない</div>
+                </label>
               </div>
-              <div className="all_delete_btn" onClick={() => { handleModalOpen(2); }}>
-                <FontAwesomeIcon icon={faTrashCan} />
-                <div>完了済みのTODOを一括削除</div>
+              <div className="btn_wrapper">
+                <div
+                  className="sort_btn"
+                  onClick={() => {
+                    setMode('sort');
+                    onResetForms();
+                  }}
+                >
+                  <FontAwesomeIcon icon={faUpDown} />
+                  <div>並び替え</div>
+                </div>
+                <div
+                  className="all_delete_btn"
+                  onClick={() => {
+                    if (todoList.filter((d) => d.is_solved).length == 0) {
+                      toast.error('完了済みのタスクがありません');
+                    } else {
+                      handleModalOpen(2);
+                    }
+                  }}
+                >
+                  <FontAwesomeIcon icon={faTrashCan} />
+                  <div>完了済みのTODOを一括削除</div>
+                </div>
               </div>
             </div>
-          </div>
+            :
+            <div className="option_wrapper">
+              <div className="sort_title">タスクの並び替え中</div>
+              <div className="btn_wrapper">
+                <div
+                  className="cancel_btn"
+                  onClick={() => {
+                    setMode('create');
+                    getTODO();
+                  }}
+                >
+                  <FontAwesomeIcon icon={faXmark} />
+                  <div>並び替えをやめる</div>
+                </div>
+                <div className="submit_btn" onClick={onSaveSort}>
+                  <FontAwesomeIcon icon={faCheck} />
+                  <div>並び替えを保存</div>
+                </div>
+              </div>
+            </div>
+          }
           <div className="todo_list_wrapper" ref={listRef}>
+            {mode == 'create' && (inputData.title != '' || inputData.detail != '') ?
+              <div className="create_preview">
+                <div className="creating_title">作成中イメージ</div>
+                <div className="item_card disabled_card">
+                  <div className="card_left">
+                    {inputData.title != '' ?
+                      <div className="title_wrapper">
+                        {inputData.add_badge ?
+                          <>
+                            {inputData.badge_type == 1 ?
+                              <div className="badge denger">重要</div>
+                              : inputData.badge_type == 2 ?
+                                <div className="badge gaisyutsu">外出</div>
+                                : inputData.badge_type == 3 ?
+                                  <div className="badge new">NEW</div>
+                                  : inputData.badge_type == 0 ?
+                                    <div
+                                      className="badge"
+                                      style={{
+                                        backgroundColor: inputData.badge_free_style.back_ground,
+                                        color: inputData.badge_free_style.color,
+                                      }}
+                                    >
+                                      {inputData.badge_free_style.name}
+                                    </div>
+                                    :
+                                    <></>
+                            }
+                          </>
+                          :
+                          <></>
+                        }
+                        <div
+                          className="title"
+                          style={inputData.title_style?.bold ?
+                            { color: inputData.title_style?.color, fontWeight: "600" } :
+                            { color: inputData.title_style?.color }
+                          }
+                        >
+                          {inputData.title}
+                        </div>
+                      </div>
+                      :
+                      <></>
+                    }
+                    {inputData.detail != '' ?
+                      <div
+                        className="detail"
+                        style={inputData.detail_style?.bold ?
+                          { color: inputData.detail_style?.color, fontWeight: "600" } :
+                          { color: inputData.detail_style?.color }
+                        }
+                      >
+                        {inputData.detail}
+                      </div>
+                      :
+                      <></>
+                    }
+                  </div>
+                  <div className="card_right">
+                    <div className="task_wrapper">
+                      <div className="mini_title">完了</div>
+                      <label style={{ cursor: "default" }}>
+                        <input
+                          type="checkbox"
+                          className="checkbox-1"
+                          name="task_solved"
+                          disabled
+                        />
+                      </label>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              :
+              <></>
+            }
             {todoList.length > 0 ?
               <DisplayTask />
               :
@@ -527,6 +729,7 @@ const SampleApp_1 = () => {
         mode={mode}
         onSumbitEdit={onSumbitEdit}
         handleModalOpen={handleModalOpen}
+        onResetForms={onResetForms}
       />
       <AppModal_1
         modalOpen={modalOpen}

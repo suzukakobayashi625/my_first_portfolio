@@ -99,13 +99,19 @@ $basic-7: #34ddee;
         }
       }
 
+      .sort_title {
+        color: $basic-2;
+      }
+
       .btn_wrapper {
         display: flex;
         align-items: center;
         gap: 1rem;
 
         .sort_btn,
-        .all_delete_btn {
+        .all_delete_btn,
+        .cancel_btn,
+        .submit_btn {
           display: flex;
           align-items: center;
           gap: 3px;
@@ -132,6 +138,22 @@ $basic-7: #34ddee;
             background-color: #f93d43;
           }
         }
+
+        .cancel_btn {
+          background-color: gray;
+
+          &:hover {
+            background-color: rgb(143, 143, 143);
+          }
+        }
+
+        .submit_btn {
+          background-color: $basic-2;
+
+          &:hover {
+            background-color: #13577b;
+          }
+        }
       }
     }
 
@@ -139,6 +161,30 @@ $basic-7: #34ddee;
       display: flex;
       flex-direction: column;
       gap: 10px;
+
+      .create_preview {
+        border: 3px solid $basic-3;
+        border-radius: 0.4rem;
+        background-color: #2a7fac41;
+        padding: 3px;
+        display: flex;
+        flex-direction: column;
+        gap: 3px;
+
+        .creating_title {
+          color: $basic-2;
+        }
+      }
+
+      .sorting_wrapper {
+        border: 3px solid $basic-3;
+        border-radius: 0.4rem;
+        background-color: #2a7fac41;
+        padding: 3px;
+        display: flex;
+        flex-direction: column;
+        gap: 10px;
+      }
 
       .editting_card {
         border: 3px solid $basic-3;
@@ -342,20 +388,33 @@ $basic-7: #34ddee;
       align-items: flex-start;
       justify-content: space-between;
 
-      .delete_btn {
+      .delete_btn,
+      .reset_btn {
         display: flex;
         align-items: center;
         gap: 5px;
         font-size: 0.8rem;
-        background-color: $basic-6;
+
         color: white;
         padding: 3px 6px;
         border-radius: 0.2rem;
         transition: all 0.2s ease;
         cursor: pointer;
+      }
+
+      .delete_btn {
+        background-color: $basic-6;
 
         &:hover {
           background-color: #f93d43;
+        }
+      }
+
+      .reset_btn {
+        background-color: gray;
+
+        &:hover {
+          background-color: rgb(143, 143, 143);
         }
       }
     }
@@ -384,7 +443,6 @@ $basic-7: #34ddee;
           border-radius: 0.3rem;
           border: 1px solid $basic-2;
           outline: none;
-          cursor: pointer;
           transition: all 0.2s ease;
 
           &:focus {
