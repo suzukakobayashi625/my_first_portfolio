@@ -1,11 +1,19 @@
 import Header from "./Header";
 import Main from "./Main";
-import { useRef } from "react";
+import { useRef, useState, useEffect } from "react";
 import { Routes, Route } from "react-router-dom";
 import SampleApp_1 from "./SampleApps/SampleApp_1";
 import { ToastContainer, toast, Slide } from "react-toastify";
+import MobileHeader from "./Mobile/MobileHeader";
+import MobileMain from "./Mobile/MobileMain";
 
 const App = () => {
+
+  const [responsiveType, setResponsiveType] = useState(
+    window.matchMedia("(max-width: 450px)").matches ?
+      'mobile' : window.matchMedia("(max-width: 780px)").matches ?
+        'tablet' : 'pc'
+  );
 
   const topRef = useRef(null);
   const profileRef = useRef(null);
@@ -13,28 +21,46 @@ const App = () => {
   const skillRef = useRef(null);
   const newsRef = useRef(null);
 
+  const handleResize = () => {
+    setResponsiveType(window.matchMedia("(max-width: 450px)").matches ?
+      'mobile' : window.matchMedia("(max-width: 780px)").matches ?
+        'tablet' : 'pc'
+    );
+  };
+
+  useEffect(() => {
+    window.addEventListener('resize', handleResize);
+    return () => window.removeEventListener('resize', handleResize);
+  }, []);
+
   return (
     <>
       <Routes>
         <Route
           path="/"
           element={
-            <>
-              <Header
-                topRef={topRef}
-                profileRef={profileRef}
-                workRef={workRef}
-                skillRef={skillRef}
-                newsRef={newsRef}
-              />
-              <Main
-                topRef={topRef}
-                profileRef={profileRef}
-                workRef={workRef}
-                skillRef={skillRef}
-                newsRef={newsRef}
-              />
-            </>
+            responsiveType == 'pc' ?
+              <>
+                <Header
+                  topRef={topRef}
+                  profileRef={profileRef}
+                  workRef={workRef}
+                  skillRef={skillRef}
+                  newsRef={newsRef}
+                />
+                <Main
+                  topRef={topRef}
+                  profileRef={profileRef}
+                  workRef={workRef}
+                  skillRef={skillRef}
+                  newsRef={newsRef}
+                />
+              </>
+              :
+              <>
+                <MobileHeader />
+                <MobileMain />
+              </>
           }
         />
         <Route path="/sample_app_1" element={<SampleApp_1 />} />
