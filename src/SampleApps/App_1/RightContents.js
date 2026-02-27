@@ -1,19 +1,165 @@
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import "../../scss/sample_app.scss";
 import { faArrowRotateRight, faTrashCan } from "@fortawesome/free-solid-svg-icons";
+import { toast } from "react-toastify";
 
 const RightContents = ({
+  STORAGE_KEY,
+  todoList,
+  getTODO,
   inputData,
   setInputData,
-  onSetColor,
-  onChengeBoldness,
-  onSetName,
-  createTODO,
   mode,
-  onSumbitEdit,
+  setMode,
   handleModalOpen,
   onResetForms,
+  target,
+  setTarget,
 }) => {
+
+  const createTODO = () => {
+    if (inputData.title == '' && inputData.detail == '') {
+      toast.error('タイトルか詳細のいずれかを入力してください');
+      return;
+
+    } else if (inputData.add_badge && inputData.badge_type == 0 && inputData.badge_free_style.name == '') {
+      toast.error('バッヂの名前を入力してください');
+      return;
+    }
+
+    try {
+      const newTodo = {
+        updated: Date.now(),
+        title: inputData.title,
+        title_style: inputData.title_style,
+        detail: inputData.detail,
+        detail_style: inputData.detail_style,
+        add_badge: inputData.add_badge,
+        badge_type: inputData.badge_type,
+        badge_free_style: inputData.badge_free_style,
+        is_solved: false,
+      };
+
+      const added_list = [newTodo, ...todoList,];
+
+      localStorage.setItem(STORAGE_KEY, JSON.stringify(added_list));
+
+      onResetForms();
+      toast.success('TODOを作成しました');
+      getTODO();
+
+    } catch (error) {
+      console.log(error);
+      toast.error('TODOの作成中にエラーが発生しました');
+      return;
+    }
+  };
+
+  const onSetColor = (form, color_1) => {
+    const origin_obj = form == 'title' ?
+      inputData.title_style : form == 'detail' ?
+        inputData.detail_style : (form == 'badge_color' || form == 'badge_back') ?
+          inputData.badge_free_style : {};
+
+    if (form == 'title') {
+      origin_obj.color = color_1;
+      setInputData({
+        ...inputData,
+        title_style: origin_obj,
+      });
+    } else if (form == 'detail') {
+      origin_obj.color = color_1;
+      setInputData({
+        ...inputData,
+        detail_style: origin_obj,
+      });
+    } else if (form == 'badge_color') {
+      origin_obj.color = color_1;
+      setInputData({
+        ...inputData,
+        badge_free_style: origin_obj,
+      });
+    } else if (form == 'badge_back') {
+      origin_obj.back_ground = color_1;
+      setInputData({
+        ...inputData,
+        badge_free_style: origin_obj,
+      });
+    }
+  };
+
+  const onChengeBoldness = (form) => {
+    const origin_obj = form == 'title' ?
+      inputData.title_style : form == 'detail' ?
+        inputData.detail_style : {};
+
+    if (form == 'title') {
+      origin_obj.bold = origin_obj.bold ? false : true;
+      setInputData({
+        ...inputData,
+        title_style: origin_obj,
+      });
+    } else if (form == 'detail') {
+      origin_obj.bold = origin_obj.bold ? false : true;
+      setInputData({
+        ...inputData,
+        detail_style: origin_obj,
+      });
+    }
+  };
+
+  const onSetName = (params) => {
+    const origin_obj = inputData.badge_free_style;
+    origin_obj.name = params;
+
+    setInputData({
+      ...inputData,
+      badge_free_style: origin_obj,
+    });
+  };
+
+  const onSumbitEdit = () => {
+
+    if (inputData.title == '' && inputData.detail == '') {
+      toast.error('タイトルか詳細のいずれかを入力してください');
+      return;
+
+    } else if (inputData.add_badge && inputData.badge_type == 0 && inputData.badge_free_style.name == '') {
+      toast.error('バッヂの名前を入力してください');
+      return;
+    }
+
+    try {
+      const newTodo = {
+        updated: Date.now(),
+        title: inputData.title,
+        title_style: inputData.title_style,
+        detail: inputData.detail,
+        detail_style: inputData.detail_style,
+        add_badge: inputData.add_badge,
+        badge_type: inputData.badge_type,
+        badge_free_style: inputData.badge_free_style,
+        is_solved: inputData.is_solved,
+      };
+
+      const updated_arr = todoList.map((todo, index) =>
+        index == target ? newTodo : todo
+      );
+
+      localStorage.setItem(STORAGE_KEY, JSON.stringify(updated_arr));
+
+      onResetForms();
+      setTarget(null);
+      setMode('create');
+      toast.success('変更を保存しました');
+      getTODO();
+
+    } catch (error) {
+      console.log(error);
+      toast.error('TODOの保存中にエラーが発生しました');
+      return;
+    }
+  };
 
   return (
     <div className="side_menu">
