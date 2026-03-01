@@ -3,6 +3,7 @@ import Main from "./Main";
 import { useRef, useState, useEffect } from "react";
 import { Routes, Route } from "react-router-dom";
 import SampleApp_1 from "./SampleApps/SampleApp_1";
+import MobileSampleApp_1 from "./SampleApps/MobileSampleApp_1";
 import { ToastContainer, toast, Slide } from "react-toastify";
 import MobileHeader from "./Mobile/MobileHeader";
 import MobileMain from "./Mobile/MobileMain";
@@ -75,7 +76,15 @@ const App = () => {
               </>
           }
         />
-        <Route path="/sample_app_1" element={<SampleApp_1 />} />
+        <Route
+          path="/sample_app_1"
+          element={
+            responsiveType == 'pc' ?
+              <SampleApp_1 />
+              :
+              <MobileSampleApp_1 />
+          }
+        />
         <Route path="*" element={<>Not Found</>} />
       </Routes>
       <ToastContainer

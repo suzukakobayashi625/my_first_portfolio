@@ -540,7 +540,7 @@ $basic-5: #05abc9;
       top: 35%;
       left: 0;
       color: white;
-      font-size: 1rem;
+      font-size: 1.3rem;
       font-weight: 600;
       background-color: rgba(0, 0, 0, 0.3);
       padding: 15px 40px;
@@ -555,7 +555,7 @@ $basic-5: #05abc9;
     gap: 0.8rem;
 
     .title {
-      font-size: 1.2rem;
+      font-size: 1.3rem;
       color: $basic-3;
     }
 
@@ -572,7 +572,7 @@ $basic-5: #05abc9;
       }
 
       .introduction {
-        font-size: 0.8rem;
+        font-size: 0.9rem;
         color: $basic-2;
         display: flex;
         flex-direction: column;
@@ -599,7 +599,7 @@ $basic-5: #05abc9;
               background-color: $basic-2;
               color: white;
               padding: 1px 8px;
-              font-size: 0.75rem;
+              font-size: 0.8rem;
               border-radius: 100px;
               white-space: nowrap;
             }
@@ -614,7 +614,7 @@ $basic-5: #05abc9;
     flex-direction: column;
 
     .title {
-      font-size: 1.2rem;
+      font-size: 1.3rem;
       color: $basic-3;
       text-align: center;
     }
@@ -664,11 +664,11 @@ $basic-5: #05abc9;
             display: flex;
             flex-direction: column;
             gap: 5px;
-            font-size: 0.8rem;
+            font-size: 0.9rem;
             color: $basic-2;
 
             .marker {
-              font-size: 0.7rem;
+              font-size: 0.8rem;
               padding: 1px 8px;
               color: white;
               white-space: nowrap;
@@ -692,7 +692,7 @@ $basic-5: #05abc9;
           .detail_link {
             display: flex;
             justify-content: flex-end;
-            font-size: 0.8rem;
+            font-size: 0.9rem;
             color: gray;
             align-items: center;
             gap: 5px;
@@ -710,7 +710,7 @@ $basic-5: #05abc9;
     gap: 0.8rem;
 
     .title {
-      font-size: 1.2rem;
+      font-size: 1.3rem;
       color: $basic-3;
       text-align: center;
     }
@@ -740,11 +740,11 @@ $basic-5: #05abc9;
           gap: 3px;
 
           .detail {
-            font-size: 0.8rem;
+            font-size: 0.9rem;
           }
 
           .icon {
-            font-size: 0.9rem;
+            font-size: 1rem;
           }
         }
       }
@@ -795,7 +795,7 @@ $basic-5: #05abc9;
 
         .card_title {
           color: $basic-3;
-          font-size: 1.1rem;
+          font-size: 1.2rem;
         }
 
         .card_content_wrapper {
@@ -809,7 +809,7 @@ $basic-5: #05abc9;
               display: flex;
               align-items: center;
               justify-content: flex-end;
-              font-size: 0.9rem;
+              font-size: 1rem;
 
               .valid_icon {
                 color: $basic-2;
@@ -829,7 +829,7 @@ $basic-5: #05abc9;
                 padding: 5px 10px;
 
                 &:not(:last-child) {
-                  font-size: 0.8rem;
+                  font-size: 0.9rem;
                   color: $basic-2;
                 }
               }
@@ -864,7 +864,7 @@ $basic-5: #05abc9;
       table {
         border-collapse: collapse;
         width: 100%;
-        font-size: 0.8rem;
+        font-size: 0.9rem;
 
         td {
           padding: 5px 10px;
@@ -978,7 +978,7 @@ $basic-5: #05abc9;
 
           .project_name {
             color: $basic-2;
-            font-size: 0.9rem;
+            font-size: 1rem;
             font-weight: 600;
           }
         }
@@ -989,7 +989,7 @@ $basic-5: #05abc9;
           gap: 8px;
 
           .products {
-            font-size: 0.8rem;
+            font-size: 0.9rem;
             border-collapse: collapse;
             table-layout: fixed;
             width: 100%;
@@ -1019,7 +1019,6 @@ $basic-5: #05abc9;
             display: flex;
             flex-direction: column;
             gap: 8px;
-            font-size: 0.8rem;
 
             .sub_title {
               font-weight: 600;
@@ -1027,7 +1026,7 @@ $basic-5: #05abc9;
             }
 
             .attention {
-              font-size: 0.8rem;
+              font-size: 0.9rem;
               color: rgb(95, 95, 95);
             }
           }

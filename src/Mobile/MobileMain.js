@@ -8,6 +8,8 @@ import MobileNews from "./MobileNews";
 import MobileModal from "./MobileModal";
 import MobileContents_1 from "./ModalContents/MobileContents_1";
 import MobileContents_2 from "./ModalContents/MobileContents_2";
+import MobileContents_3 from "./ModalContents/MobileContents_3";
+import MobileContents_4 from "./ModalContents/MobileContents_4";
 
 const MobileMain = ({
   topRef,
@@ -37,17 +39,15 @@ const MobileMain = ({
       return (
         <MobileContents_2 />
       );
-    } 
-    
-    // else if (modalContentsId == 3) {
-    //   return (
-    //     <Contents_3 />
-    //   );
-    // } else if (modalContentsId == 4) {
-    //   return (
-    //     <Contents_4 />
-    //   );
-    // }
+    } else if (modalContentsId == 3) {
+      return (
+        <MobileContents_3 />
+      );
+    } else if (modalContentsId == 4) {
+      return (
+        <MobileContents_4 />
+      );
+    }
   };
 
   return (

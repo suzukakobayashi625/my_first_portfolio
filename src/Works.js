@@ -29,6 +29,7 @@ const Works = ({
 					slidesPerView={3}      // ← 常に3つ表示
 					slidesPerGroup={1}     // ← 1つずつ動く
 					spaceBetween={16}
+					loop={true}
 				>
 					<SwiperSlide>
 						<div className="project" onClick={() => handleModalOpen(1)}>
