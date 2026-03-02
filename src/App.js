@@ -89,7 +89,7 @@ const App = () => {
       </Routes>
       <ToastContainer
         transition={Slide}
-        position="bottom-right"
+        position={responsiveType == "pc" ? "bottom-right" : "top-right"}
         autoClose={5000}
         hideProgressBar
         newestOnTop={false}

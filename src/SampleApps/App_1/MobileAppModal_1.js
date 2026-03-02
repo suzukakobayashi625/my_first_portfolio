@@ -1,11 +1,12 @@
 import { useEffect, useState, useRef } from "react";
-import "../scss/main.scss";
+import "../../scss/sample_app.scss";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faXmark } from "@fortawesome/free-solid-svg-icons";
 
-const MobileModal = ({
+const MobileAppModal_1 = ({
   modalOpen,
   setModalOpen,
+  onResetForms,
   children,
 }) => {
 
@@ -22,15 +23,23 @@ const MobileModal = ({
 
   return (
     <div
-      className={`mobile-modal-overlay ${modalOpen ? "active" : ""}`}
-      id="mobile-modal-overlay"
-      onClick={() => { setModalOpen(false); }}
+      className={`mobile-app-modal-overlay ${modalOpen ? "active" : ""}`}
+      id="mobile-app-modal-overlay"
+      // onClick={() => {
+      //   setModalOpen(false);
+      //   onResetForms();
+      // }}
     >
       <div
-        className={`mobile-modal ${modalOpen ? "active" : ""}`}
+        className={`mobile-app-modal ${modalOpen ? "active" : ""}`}
         onClick={(e) => { e.stopPropagation(); }}
       >
-        <div className="close_btn" onClick={() => { setModalOpen(false); }}>
+        <div
+          className="close_btn"
+          onClick={() => {
+            setModalOpen(false);
+            onResetForms();
+          }}>
           <FontAwesomeIcon icon={faXmark} />
         </div>
         {children}
@@ -39,4 +48,4 @@ const MobileModal = ({
   );
 }
 
-export default MobileModal;
+export default MobileAppModal_1;

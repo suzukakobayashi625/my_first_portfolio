@@ -12,6 +12,9 @@ import AppModal_1 from "./App_1/AppModal_1";
 import SingleDeleteConfirm from "./App_1/ModalContents/SingleDeleteConfirm";
 import AllDeleteConfirm from "./App_1/ModalContents/AllDeleteConfirm";
 import MobileMainContents from "./App_1/MobileMainContents";
+import MobileAppModal_1 from "./App_1/MobileAppModal_1";
+import MobileTodoForm from "./App_1/ModalContents/MobileTodoForm";
+import MobileAppModalContents from "./App_1/MobileAppModalContents";
 
 const MobileSampleApp_1 = () => {
 
@@ -110,27 +113,40 @@ const MobileSampleApp_1 = () => {
     }
   };
 
-  const ModalContents = () => {
-    if (modalContentsId == null) {
-      return (<></>);
-    }
+  // const ModalContents = () => {
+  //   if (modalContentsId == null) {
+  //     return (<></>);
+  //   }
 
-    if (modalContentsId == 1) {
-      return (
-        <SingleDeleteConfirm
-          setModalOpen={setModalOpen}
-          singleDeleteTODO={singleDeleteTODO}
-        />
-      );
-    } else if (modalContentsId == 2) {
-      return (
-        <AllDeleteConfirm
-          setModalOpen={setModalOpen}
-          allDeleteTODO={allDeleteTODO}
-        />
-      );
-    }
-  };
+  //   if (modalContentsId == 1) {
+  //     return (
+  //       <MobileTodoForm
+  //         inputData={inputData}
+  //         setInputData={setInputData}
+  //         STORAGE_KEY={STORAGE_KEY}
+  //         onResetForms={onResetForms}
+  //         getTODO={getTODO}
+  //         todoList={todoList}
+  //       />
+  //     );
+  //   }
+
+  //   // if (modalContentsId == 1) {
+  //   //   return (
+  //   //     <SingleDeleteConfirm
+  //   //       setModalOpen={setModalOpen}
+  //   //       singleDeleteTODO={singleDeleteTODO}
+  //   //     />
+  //   //   );
+  //   // } else if (modalContentsId == 2) {
+  //   //   return (
+  //   //     <AllDeleteConfirm
+  //   //       setModalOpen={setModalOpen}
+  //   //       allDeleteTODO={allDeleteTODO}
+  //   //     />
+  //   //   );
+  //   // }
+  // };
 
   const allDeleteTODO = () => {
     try {
@@ -158,7 +174,7 @@ const MobileSampleApp_1 = () => {
 
   return (
     <div className="mobile_sample_1_container">
-      <div className="create_btn">
+      <div className="create_btn" onClick={() => { handleModalOpen(1); }}>
         <FontAwesomeIcon icon={faPlus} />
       </div>
 
@@ -218,13 +234,22 @@ const MobileSampleApp_1 = () => {
         onResetForms={onResetForms}
         target={target}
         setTarget={setTarget}
-      />
-      <AppModal_1
+      />*/}
+      <MobileAppModal_1
         modalOpen={modalOpen}
         setModalOpen={setModalOpen}
+        onResetForms={onResetForms}
       >
-        <ModalContents />
-      </AppModal_1> */}
+        <MobileAppModalContents
+          modalContentsId={modalContentsId}
+          inputData={inputData}
+          setInputData={setInputData}
+          STORAGE_KEY={STORAGE_KEY}
+          onResetForms={onResetForms}
+          getTODO={getTODO}
+          todoList={todoList}
+        />
+      </MobileAppModal_1>
     </div >
   );
 }

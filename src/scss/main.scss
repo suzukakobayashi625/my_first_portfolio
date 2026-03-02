@@ -914,7 +914,7 @@ $basic-5: #05abc9;
 
   .mobile-modal {
     background: white;
-    padding: 1.5rem;
+    padding: 1.3rem;
     border-radius: 0.4rem;
     width: 75%;
     position: relative;
@@ -935,6 +935,7 @@ $basic-5: #05abc9;
         display: flex;
         flex-direction: column;
         gap: 8px;
+        padding: 0.2rem;
 
         .border {
           background-color: #14492364;
