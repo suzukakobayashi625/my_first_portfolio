@@ -431,6 +431,11 @@ $basic-5: #05abc9;
             color: $basic-4;
           }
 
+          .sample {
+            background-color: #d5ecf0;
+            color: $basic-5;
+          }
+
           .devices {
             color: gray;
             display: flex;
@@ -485,6 +490,28 @@ $basic-5: #05abc9;
           .attention {
             font-size: 0.9rem;
             color: rgb(95, 95, 95);
+          }
+
+          .how_to {
+            display: flex;
+            flex-direction: column;
+            gap: 8px;
+            margin-top: 5px;
+          }
+
+          .link_btn {
+            margin-top: 5px;
+            background-color: $basic-3;
+            color: $basic-2;
+            padding: 4px 8px;
+            border-radius: 0.3rem;
+            width: fit-content;
+            text-align: center;
+            font-weight: 600;
+
+            &:hover {
+              background-color: #a1db25;
+            }
           }
         }
       }
@@ -969,6 +996,11 @@ $basic-5: #05abc9;
               color: $basic-4;
             }
 
+            .sample {
+              background-color: #d5ecf0;
+              color: $basic-5;
+            }
+
             .devices {
               color: gray;
               display: flex;
@@ -1029,6 +1061,28 @@ $basic-5: #05abc9;
             .attention {
               font-size: 0.9rem;
               color: rgb(95, 95, 95);
+            }
+
+            .how_to {
+              display: flex;
+              flex-direction: column;
+              gap: 8px;
+              margin-top: 5px;
+            }
+
+            .link_btn {
+              margin-top: 5px;
+              background-color: $basic-3;
+              color: $basic-2;
+              padding: 4px 8px;
+              border-radius: 0.3rem;
+              width: fit-content;
+              text-align: center;
+              font-weight: 600;
+
+              &:hover {
+                background-color: #a1db25;
+              }
             }
           }
         }

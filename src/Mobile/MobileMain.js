@@ -10,6 +10,7 @@ import MobileContents_1 from "./ModalContents/MobileContents_1";
 import MobileContents_2 from "./ModalContents/MobileContents_2";
 import MobileContents_3 from "./ModalContents/MobileContents_3";
 import MobileContents_4 from "./ModalContents/MobileContents_4";
+import MobileContents_5 from "./ModalContents/MobileContents_5";
 
 const MobileMain = ({
   topRef,
@@ -46,6 +47,10 @@ const MobileMain = ({
     } else if (modalContentsId == 4) {
       return (
         <MobileContents_4 />
+      );
+    } else if (modalContentsId == 5) {
+      return (
+        <MobileContents_5 />
       );
     }
   };

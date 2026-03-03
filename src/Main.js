@@ -10,6 +10,7 @@ import Contents_1 from "./ModalContents/Contents_1";
 import Contents_2 from "./ModalContents/Contents_2";
 import Contents_3 from "./ModalContents/Contents_3";
 import Contents_4 from "./ModalContents/Contents_4";
+import Contents_5 from "./ModalContents/Contents_5";
 
 const Main = ({
   topRef,
@@ -46,6 +47,10 @@ const Main = ({
     } else if (modalContentsId == 4) {
       return (
         <Contents_4 />
+      );
+    } else if (modalContentsId == 5) {
+      return (
+        <Contents_5 />
       );
     }
   };
