@@ -1,6 +1,6 @@
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import "../../../scss/sample_app.scss";
-import { faPlus } from "@fortawesome/free-solid-svg-icons";
+import { faPen, faPlus } from "@fortawesome/free-solid-svg-icons";
 import { toast } from "react-toastify";
 
 const MobileTodoForm = ({
@@ -10,6 +10,10 @@ const MobileTodoForm = ({
 	onResetForms,
 	getTODO,
 	todoList,
+	setModalOpen,
+	mode,
+	setConfirmModalOpen,
+	target,
 }) => {
 
 	const onSetColor = (form, color_1) => {
@@ -105,6 +109,7 @@ const MobileTodoForm = ({
 			onResetForms();
 			toast.success('TODOを作成しました');
 			getTODO();
+			setModalOpen(false);
 
 		} catch (error) {
 			console.log(error);
@@ -113,12 +118,69 @@ const MobileTodoForm = ({
 		}
 	};
 
+	const onSumbitEdit = () => {
+
+		if (inputData.title == '' && inputData.detail == '') {
+			toast.error('タイトルか詳細のいずれかを入力してください');
+			return;
+
+		} else if (inputData.add_badge && inputData.badge_type == 0 && inputData.badge_free_style.name == '') {
+			toast.error('バッヂの名前を入力してください');
+			return;
+		}
+
+		try {
+			const newTodo = {
+				updated: Date.now(),
+				title: inputData.title,
+				title_style: inputData.title_style,
+				detail: inputData.detail,
+				detail_style: inputData.detail_style,
+				add_badge: inputData.add_badge,
+				badge_type: inputData.badge_type,
+				badge_free_style: inputData.badge_free_style,
+				is_solved: inputData.is_solved,
+			};
+
+			const updated_arr = todoList.map((todo, index) =>
+				index == target ? newTodo : todo
+			);
+
+			localStorage.setItem(STORAGE_KEY, JSON.stringify(updated_arr));
+
+			onResetForms();
+			toast.success('変更を保存しました');
+			getTODO();
+			setModalOpen(false);
+
+		} catch (error) {
+			console.log(error);
+			toast.error('TODOの保存中にエラーが発生しました');
+			return;
+		}
+	};
+
 	return (
 		<div className="modal_contents_wrapper">
-			<div className="modal_title">
-				<FontAwesomeIcon icon={faPlus} />
-				<div>TODO新規作成</div>
-			</div>
+			{mode == 'create' ?
+				<div className="modal_title">
+					<FontAwesomeIcon icon={faPlus} />
+					<div>TODO新規作成</div>
+				</div>
+				:
+				<div className="edit_title_wrapper">
+					<div className="modal_title">
+						<FontAwesomeIcon icon={faPen} />
+						<div>TODO編集中</div>
+					</div>
+					<div
+						className="delete_btn"
+						onClick={() => setConfirmModalOpen(true)}
+					>
+						削除する
+					</div>
+				</div>
+			}
 			<div className="scroll_wrapper">
 				<div className="input_wrapper">
 					<div className="input_form">
@@ -348,7 +410,11 @@ const MobileTodoForm = ({
 						<></>
 					}
 				</div>
-				<button className="submit_btn" onClick={createTODO}>作成</button>
+				{mode == 'create' ?
+					<button className="submit_btn" onClick={createTODO}>作成</button>
+					:
+					<button className="submit_btn" onClick={onSumbitEdit}>保存</button>
+				}
 			</div>
 		</div>
 	);

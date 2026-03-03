@@ -73,6 +73,8 @@ const MobileMainContents = ({
       },
       is_solved: target_data.is_solved,
     });
+
+    handleModalOpen(1);
   };
 
   const handleSolved = (is_solved, index) => {

@@ -1151,7 +1151,7 @@ $basic-7: #34ddee;
                 transform: rotate(45deg);
                 width: 4px;
                 height: 8px;
-                border: solid $basic-2;
+                border: solid white;
                 border-width: 0 2px 2px 0;
               }
 
@@ -1233,6 +1233,27 @@ $basic-7: #34ddee;
       gap: 3px;
       font-weight: 600;
       color: $basic-3;
+    }
+
+    .edit_title_wrapper {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+
+      .delete_btn {
+        background-color: $basic-6;
+        color: white;
+        font-size: 0.9rem;
+        text-align: center;
+        color: white;
+        padding: 3px 6px;
+        border-radius: 0.2rem;
+        transition: all 0.2s ease;
+
+        &:hover {
+          background-color: #f93d43;
+        }
+      }
     }
 
     .modal_contents_wrapper {
@@ -1662,6 +1683,96 @@ $basic-7: #34ddee;
     //     }
     //   }
     // }
+  }
+
+  .close_btn {
+    position: absolute;
+    top: -10px;
+    right: -10px;
+    background-color: $basic-2;
+    color: white;
+    width: 35px;
+    height: 35px;
+    border-radius: 50px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    border: 2px solid white;
+  }
+}
+
+.mobile-confirm-modal-overlay {
+  position: fixed;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.5);
+  z-index: 1001;
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 0.3s ease;
+
+  &.active {
+    opacity: 1;
+    pointer-events: auto;
+  }
+
+  .mobile-confirm-modal {
+    background: white;
+    padding: 1.3rem;
+    border-radius: 0.4rem;
+    width: 75%;
+    position: relative;
+    transform: scale(0.8);
+    opacity: 0;
+    transition: all 0.3s ease;
+
+    &.active {
+      transform: scale(1);
+      opacity: 1;
+    }
+
+    .main_wrapper {
+      color: $basic-2;
+    }
+
+    .btn_wrapper {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 1rem;
+
+      button {
+        font-size: 0.9rem;
+        width: 100%;
+        padding: 4px;
+        border: none;
+        border-radius: 0.3rem;
+        color: white;
+        cursor: pointer;
+        transition: all 0.2s ease;
+
+        &:first-child {
+          background-color: gray;
+
+          &:hover {
+            background-color: rgb(143, 143, 143);
+          }
+        }
+
+        &:last-child {
+          background-color: $basic-2;
+
+          &:hover {
+            background-color: #13577b;
+          }
+        }
+      }
+    }
   }
 
   .close_btn {

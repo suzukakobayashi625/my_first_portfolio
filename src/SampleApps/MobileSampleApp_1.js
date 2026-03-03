@@ -13,6 +13,7 @@ import SingleDeleteConfirm from "./App_1/ModalContents/SingleDeleteConfirm";
 import AllDeleteConfirm from "./App_1/ModalContents/AllDeleteConfirm";
 import MobileMainContents from "./App_1/MobileMainContents";
 import MobileAppModal_1 from "./App_1/MobileAppModal_1";
+import MobileAppModal_2 from "./App_1/MobileAppModal_2";
 import MobileTodoForm from "./App_1/ModalContents/MobileTodoForm";
 import MobileAppModalContents from "./App_1/MobileAppModalContents";
 
@@ -43,6 +44,7 @@ const MobileSampleApp_1 = () => {
   const [mode, setMode] = useState('create');
   const [target, setTarget] = useState(null);
   const [modalOpen, setModalOpen] = useState(false);
+  const [confirmModalOpen, setConfirmModalOpen] = useState(false);
   const [modalContentsId, setModalContentsId] = useState(null);
   const [isDisplaySolvedTask, setIsDisplaySolvedTask] = useState(true);
 
@@ -174,7 +176,13 @@ const MobileSampleApp_1 = () => {
 
   return (
     <div className="mobile_sample_1_container">
-      <div className="create_btn" onClick={() => { handleModalOpen(1); }}>
+      <div
+        className="create_btn"
+        onClick={() => {
+          handleModalOpen(1);
+          setMode('create');
+        }}
+      >
         <FontAwesomeIcon icon={faPlus} />
       </div>
 
@@ -248,8 +256,16 @@ const MobileSampleApp_1 = () => {
           onResetForms={onResetForms}
           getTODO={getTODO}
           todoList={todoList}
+          setModalOpen={setModalOpen}
+          mode={mode}
+          setConfirmModalOpen={setConfirmModalOpen}
+          target={target}
         />
       </MobileAppModal_1>
+      <MobileAppModal_2
+        confirmModalOpen={confirmModalOpen}
+        setConfirmModalOpen={setConfirmModalOpen}
+      />
     </div >
   );
 }

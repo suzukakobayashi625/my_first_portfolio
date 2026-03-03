@@ -82,30 +82,25 @@ const DisplayTask = ({
                 }
               </div>
               <div className="card_right">
-                {mode == 'create' ?
-                  <div className="task_wrapper">
+                {mode != 'sort' ?
+                  <div className="task_wrapper" onClick={(e) => e.stopPropagation()}>
                     <div className="mini_title">完了</div>
-                    <label
-                      onClick={(e) => {
-                        e.stopPropagation();
-                        handleSolved(d.is_solved, index);
-                      }}
-                    >
+                    <label>
                       <input
                         type="checkbox"
                         className="checkbox-1"
                         name="task_solved"
                         checked={d.is_solved}
-                        onChange={() => { }}
+                        onChange={() => {
+                          handleSolved(d.is_solved, index)
+                        }}
                       />
                     </label>
                   </div>
-                  : mode == 'sort' ?
-                    <div className="handle">
-                      <FontAwesomeIcon icon={faBars} />
-                    </div>
-                    :
-                    <></>
+                  :
+                  <div className="handle">
+                    <FontAwesomeIcon icon={faBars} />
+                  </div>
                 }
               </div>
             </div>

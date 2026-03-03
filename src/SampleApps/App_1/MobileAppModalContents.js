@@ -8,6 +8,10 @@ const MobileAppModalContents = ({
   onResetForms,
   getTODO,
   todoList,
+  setModalOpen,
+  mode,
+  setConfirmModalOpen,
+  target,
 }) => {
 
   if (modalContentsId == null) {
@@ -23,6 +27,10 @@ const MobileAppModalContents = ({
         onResetForms={onResetForms}
         getTODO={getTODO}
         todoList={todoList}
+        setModalOpen={setModalOpen}
+        mode={mode}
+        setConfirmModalOpen={setConfirmModalOpen}
+        target={target}
       />
     );
   }

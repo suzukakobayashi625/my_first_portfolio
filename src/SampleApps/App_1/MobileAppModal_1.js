@@ -25,10 +25,10 @@ const MobileAppModal_1 = ({
     <div
       className={`mobile-app-modal-overlay ${modalOpen ? "active" : ""}`}
       id="mobile-app-modal-overlay"
-      // onClick={() => {
-      //   setModalOpen(false);
-      //   onResetForms();
-      // }}
+      onClick={() => {
+        setModalOpen(false);
+        onResetForms();
+      }}
     >
       <div
         className={`mobile-app-modal ${modalOpen ? "active" : ""}`}
