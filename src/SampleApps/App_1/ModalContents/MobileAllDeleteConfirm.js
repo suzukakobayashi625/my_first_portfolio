@@ -5,7 +5,7 @@ const MobileAllDeleteConfirm = ({
 	allDeleteTODO,
 }) => {
 	return (
-		<div className="modal_contents_wrapper">
+		<div className="modal_contents_wrapper" style={{ overflowY: "hidden" }}>
 			<div className="main_wrapper">
 				完了済みのTODOを一括削除します。<br />
 				よろしいですか？

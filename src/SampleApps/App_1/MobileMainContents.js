@@ -104,45 +104,51 @@ const MobileMainContents = ({
   return (
     <div className="contents_wrapper">
       {mode != 'sort' ?
-        <div className="option_wrapper">
-          <div className="hidden_check">
-            <label>
-              <input
-                type="checkbox"
-                className="checkbox-1"
-                name="hidden_check"
-                value={isDisplaySolvedTask}
-                onChange={() => { setIsDisplaySolvedTask(!isDisplaySolvedTask); }}
-              />
-              <div className="sentence">完了済みのタスクは表示しない</div>
-            </label>
-          </div>
-          <div className="btn_wrapper">
-            <div
-              className="sort_btn"
-              onClick={() => {
-                setMode('sort');
-                onResetForms();
-              }}
-            >
-              <FontAwesomeIcon icon={faUpDown} />
-              <div>並び替え</div>
+        <>
+          {todoList.length > 0 ?
+            <div className="option_wrapper">
+              <div className="hidden_check">
+                <label>
+                  <input
+                    type="checkbox"
+                    className="checkbox-1"
+                    name="hidden_check"
+                    value={isDisplaySolvedTask}
+                    onChange={() => { setIsDisplaySolvedTask(!isDisplaySolvedTask); }}
+                  />
+                  <div className="sentence">完了済みのタスクは表示しない</div>
+                </label>
+              </div>
+              <div className="btn_wrapper">
+                <div
+                  className="sort_btn"
+                  onClick={() => {
+                    setMode('sort');
+                    onResetForms();
+                  }}
+                >
+                  <FontAwesomeIcon icon={faUpDown} />
+                  <div>並び替え</div>
+                </div>
+                <div
+                  className="all_delete_btn"
+                  onClick={() => {
+                    if (todoList.filter((d) => d.is_solved).length == 0) {
+                      toast.error('完了済みのタスクがありません');
+                    } else {
+                      handleModalOpen(2);
+                    }
+                  }}
+                >
+                  <FontAwesomeIcon icon={faTrashCan} />
+                  <div>完了済みのTODOを一括削除</div>
+                </div>
+              </div>
             </div>
-            <div
-              className="all_delete_btn"
-              onClick={() => {
-                if (todoList.filter((d) => d.is_solved).length == 0) {
-                  toast.error('完了済みのタスクがありません');
-                } else {
-                  handleModalOpen(2);
-                }
-              }}
-            >
-              <FontAwesomeIcon icon={faTrashCan} />
-              <div>完了済みのTODOを一括削除</div>
-            </div>
-          </div>
-        </div>
+            :
+            <></>
+          }
+        </>
         :
         <div className="option_wrapper">
           <div className="sort_title">タスクの並び替え中</div>

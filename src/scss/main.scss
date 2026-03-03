@@ -924,7 +924,7 @@ $basic-5: #05abc9;
   position: fixed;
   inset: 0;
   background: rgba(0, 0, 0, 0.5);
-  z-index: 1000;
+  z-index: 1002;
 
   display: flex;
   justify-content: center;
@@ -956,7 +956,7 @@ $basic-5: #05abc9;
 
     .modal_contents_wrapper {
       max-height: 50vh;
-      overflow-y: auto;
+      overflow-y: scroll;
 
       .scroll_wrapper {
         display: flex;
