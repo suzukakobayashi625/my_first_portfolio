@@ -1,6 +1,6 @@
 import "../../../scss/sample_app.scss";
 
-const AllDeleteConfirm = ({
+const MobileAllDeleteConfirm = ({
 	setModalOpen,
 	allDeleteTODO,
 }) => {
@@ -18,4 +18,4 @@ const AllDeleteConfirm = ({
 	);
 };
 
-export default AllDeleteConfirm;
+export default MobileAllDeleteConfirm;

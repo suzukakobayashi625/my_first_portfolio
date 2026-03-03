@@ -43,8 +43,6 @@ const MobileAppModal_2 = ({
           <div className="btn_wrapper">
             <button onClick={() => { setConfirmModalOpen(false); }}>キャンセル</button>
             <button>はい</button>
-            {/* <button onClick={() => { setModalOpen(false); }}>キャンセル</button>
-            <button onClick={singleDeleteTODO}>はい</button> */}
           </div>
         </div>
       </div>

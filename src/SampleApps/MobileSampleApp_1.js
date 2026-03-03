@@ -1,20 +1,14 @@
 import { useState, useEffect, } from "react";
 import "../scss/sample_app.scss";
-import RightContents from "./App_1/RightContents";
-import LeftContents from "./App_1/LeftContents";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import {
   faClipboardList,
   faPlus
 } from "@fortawesome/free-solid-svg-icons";
 import { toast } from "react-toastify";
-import AppModal_1 from "./App_1/AppModal_1";
-import SingleDeleteConfirm from "./App_1/ModalContents/SingleDeleteConfirm";
-import AllDeleteConfirm from "./App_1/ModalContents/AllDeleteConfirm";
 import MobileMainContents from "./App_1/MobileMainContents";
 import MobileAppModal_1 from "./App_1/MobileAppModal_1";
 import MobileAppModal_2 from "./App_1/MobileAppModal_2";
-import MobileTodoForm from "./App_1/ModalContents/MobileTodoForm";
 import MobileAppModalContents from "./App_1/MobileAppModalContents";
 
 const MobileSampleApp_1 = () => {
@@ -95,61 +89,6 @@ const MobileSampleApp_1 = () => {
     setModalOpen(true);
   };
 
-  const singleDeleteTODO = () => {
-    try {
-      const deletedTodo = todoList.filter((d, index) => index != target);
-
-      localStorage.setItem(STORAGE_KEY, JSON.stringify(deletedTodo));
-
-      onResetForms();
-      setTarget(null);
-      setMode('create');
-      setModalOpen(false);
-      toast.success('TODOを削除しました');
-      getTODO();
-
-    } catch (error) {
-      console.log(error);
-      toast.error('TODOの削除中にエラーが発生しました');
-      return;
-    }
-  };
-
-  // const ModalContents = () => {
-  //   if (modalContentsId == null) {
-  //     return (<></>);
-  //   }
-
-  //   if (modalContentsId == 1) {
-  //     return (
-  //       <MobileTodoForm
-  //         inputData={inputData}
-  //         setInputData={setInputData}
-  //         STORAGE_KEY={STORAGE_KEY}
-  //         onResetForms={onResetForms}
-  //         getTODO={getTODO}
-  //         todoList={todoList}
-  //       />
-  //     );
-  //   }
-
-  //   // if (modalContentsId == 1) {
-  //   //   return (
-  //   //     <SingleDeleteConfirm
-  //   //       setModalOpen={setModalOpen}
-  //   //       singleDeleteTODO={singleDeleteTODO}
-  //   //     />
-  //   //   );
-  //   // } else if (modalContentsId == 2) {
-  //   //   return (
-  //   //     <AllDeleteConfirm
-  //   //       setModalOpen={setModalOpen}
-  //   //       allDeleteTODO={allDeleteTODO}
-  //   //     />
-  //   //   );
-  //   // }
-  // };
-
   const allDeleteTODO = () => {
     try {
       const deletedTodo = todoList.filter((d) => !d.is_solved);
@@ -204,45 +143,9 @@ const MobileSampleApp_1 = () => {
           getTODO={getTODO}
           inputData={inputData}
           setInputData={setInputData}
-          target={target}
           setTarget={setTarget}
         />
       </div>
-      {/* <div className="main_wrapper">
-        <div className="main_title">
-          <FontAwesomeIcon icon={faClipboardList} />
-          <div>Sample TODO App</div>
-        </div>
-        <LeftContents
-          STORAGE_KEY={STORAGE_KEY}
-          mode={mode}
-          setMode={setMode}
-          isDisplaySolvedTask={isDisplaySolvedTask}
-          setIsDisplaySolvedTask={setIsDisplaySolvedTask}
-          onResetForms={onResetForms}
-          todoList={todoList}
-          setTodoList={setTodoList}
-          handleModalOpen={handleModalOpen}
-          getTODO={getTODO}
-          inputData={inputData}
-          setInputData={setInputData}
-          target={target}
-          setTarget={setTarget}
-        />
-      </div>
-      <RightContents
-        STORAGE_KEY={STORAGE_KEY}
-        todoList={todoList}
-        getTODO={getTODO}
-        inputData={inputData}
-        setInputData={setInputData}
-        mode={mode}
-        setMode={setMode}
-        handleModalOpen={handleModalOpen}
-        onResetForms={onResetForms}
-        target={target}
-        setTarget={setTarget}
-      />*/}
       <MobileAppModal_1
         modalOpen={modalOpen}
         setModalOpen={setModalOpen}
@@ -260,6 +163,7 @@ const MobileSampleApp_1 = () => {
           mode={mode}
           setConfirmModalOpen={setConfirmModalOpen}
           target={target}
+          allDeleteTODO={allDeleteTODO}
         />
       </MobileAppModal_1>
       <MobileAppModal_2

@@ -10,7 +10,7 @@ import {
 } from "@fortawesome/free-solid-svg-icons";
 import { toast } from "react-toastify";
 import Sortable from "sortablejs";
-import DisplayTask from "./DisplayTask";
+import MobileDisplayTask from "./MobileDisplayTask";
 
 const MobileMainContents = ({
   STORAGE_KEY,
@@ -25,7 +25,6 @@ const MobileMainContents = ({
   getTODO,
   inputData,
   setInputData,
-  target,
   setTarget,
 }) => {
 
@@ -167,15 +166,10 @@ const MobileMainContents = ({
       }
       <div className="todo_list_wrapper" ref={listRef}>
         {todoList.length > 0 ?
-          <DisplayTask
+          <MobileDisplayTask
             todoList={todoList}
             mode={mode}
-            setMode={setMode}
-            target={target}
-            setTarget={setTarget}
-            onResetForms={onResetForms}
             onEdit={onEdit}
-            inputData={inputData}
             handleSolved={handleSolved}
           />
           :

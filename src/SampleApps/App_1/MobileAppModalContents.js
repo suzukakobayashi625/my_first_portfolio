@@ -1,4 +1,5 @@
 import MobileTodoForm from "./ModalContents/MobileTodoForm";
+import MobileAllDeleteConfirm from "./ModalContents/MobileAllDeleteConfirm";
 
 const MobileAppModalContents = ({
   modalContentsId,
@@ -12,6 +13,7 @@ const MobileAppModalContents = ({
   mode,
   setConfirmModalOpen,
   target,
+  allDeleteTODO,
 }) => {
 
   if (modalContentsId == null) {
@@ -33,23 +35,14 @@ const MobileAppModalContents = ({
         target={target}
       />
     );
+  } else if (modalContentsId == 2) {
+    return (
+      <MobileAllDeleteConfirm
+        setModalOpen={setModalOpen}
+        allDeleteTODO={allDeleteTODO}
+      />
+    );
   }
-
-  // if (modalContentsId == 1) {
-  //   return (
-  //     <SingleDeleteConfirm
-  //       setModalOpen={setModalOpen}
-  //       singleDeleteTODO={singleDeleteTODO}
-  //     />
-  //   );
-  // } else if (modalContentsId == 2) {
-  //   return (
-  //     <AllDeleteConfirm
-  //       setModalOpen={setModalOpen}
-  //       allDeleteTODO={allDeleteTODO}
-  //     />
-  //   );
-  // }
 };
 
 export default MobileAppModalContents;
