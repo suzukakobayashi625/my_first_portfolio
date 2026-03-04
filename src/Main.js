@@ -11,6 +11,7 @@ import Contents_2 from "./ModalContents/Contents_2";
 import Contents_3 from "./ModalContents/Contents_3";
 import Contents_4 from "./ModalContents/Contents_4";
 import Contents_5 from "./ModalContents/Contents_5";
+import Footer from "./Footer";
 
 const Main = ({
   topRef,
@@ -71,6 +72,7 @@ const Main = ({
         <Skills skillRef={skillRef} />
         <News newsRef={newsRef} />
       </div>
+      <Footer />
       <Modal
         modalOpen={modalOpen}
         setModalOpen={setModalOpen}

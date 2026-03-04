@@ -11,6 +11,7 @@ import MobileContents_2 from "./ModalContents/MobileContents_2";
 import MobileContents_3 from "./ModalContents/MobileContents_3";
 import MobileContents_4 from "./ModalContents/MobileContents_4";
 import MobileContents_5 from "./ModalContents/MobileContents_5";
+import MobileFooter from "./MobileFooter";
 
 const MobileMain = ({
   topRef,
@@ -80,6 +81,7 @@ const MobileMain = ({
         />
         <MobileNews newsRef={newsRef} />
       </div>
+      <MobileFooter />
       <MobileModal
         modalOpen={modalOpen}
         setModalOpen={setModalOpen}
