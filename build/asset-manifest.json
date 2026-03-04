@@ -1,0 +1,21 @@
+{
+  "files": {
+    "main.css": "/my_first_portfolio/static/css/main.5864632c.css",
+    "main.js": "/my_first_portfolio/static/js/main.2b3be303.js",
+    "static/js/453.fd2f0c4a.chunk.js": "/my_first_portfolio/static/js/453.fd2f0c4a.chunk.js",
+    "static/media/IMG_0317.jpg": "/my_first_portfolio/static/media/IMG_0317.4d645788db783d5560db.jpg",
+    "static/media/rezept_image.PNG": "/my_first_portfolio/static/media/rezept_image.30f4c97bc06b5f0e5b9d.PNG",
+    "static/media/crm_image.PNG": "/my_first_portfolio/static/media/crm_image.c1ef0f53202096fceccd.PNG",
+    "static/media/customer_management_image.PNG": "/my_first_portfolio/static/media/customer_management_image.df06d9d7edbf7cf47899.PNG",
+    "static/media/IMG_0411.PNG": "/my_first_portfolio/static/media/IMG_0411.9c52aa06edc7580e7957.PNG",
+    "static/media/sample_app_1_image.png": "/my_first_portfolio/static/media/sample_app_1_image.6ab7f875c53c0505824f.png",
+    "index.html": "/my_first_portfolio/index.html",
+    "main.5864632c.css.map": "/my_first_portfolio/static/css/main.5864632c.css.map",
+    "main.2b3be303.js.map": "/my_first_portfolio/static/js/main.2b3be303.js.map",
+    "453.fd2f0c4a.chunk.js.map": "/my_first_portfolio/static/js/453.fd2f0c4a.chunk.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.5864632c.css",
+    "static/js/main.2b3be303.js"
+  ]
+}
