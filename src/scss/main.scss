@@ -964,6 +964,8 @@ $basic-5: #05abc9;
   display: flex;
   align-items: center;
   justify-content: center;
+  z-index: 10;
+  position: relative;
 
   .footer_wrapper {
     display: flex;
