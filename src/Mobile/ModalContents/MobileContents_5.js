@@ -12,7 +12,7 @@ const MobileContents_5 = ({ responsiveType }) => {
   return (
     <div
       className="modal_contents_wrapper"
-      style={{ maxHeight: responsiveType == 'mobile' ? '50vh' : '70vh' }}
+      style={{ maxHeight: responsiveType == 'mobile' ? '65vh' : '75vh' }}
     >
       <div className="scroll_wrapper">
         <div className="project_title_wrapper">
@@ -62,7 +62,9 @@ const MobileContents_5 = ({ responsiveType }) => {
               <div className="sub_title">モバイル・タブレット操作について</div>
               <div>
                 画面右下の「＋」ボタンで新規のTODOを作成することができます。<br />
+                <br />
                 TODOを完了したら、リスト右側にある「完了」のチェックボックスを入れます。<br />
+                <br />
                 編集や削除するときは任意のTODOをクリックしてください。
               </div>
             </div>

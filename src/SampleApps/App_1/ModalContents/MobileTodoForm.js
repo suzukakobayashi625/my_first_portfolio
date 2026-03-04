@@ -164,7 +164,7 @@ const MobileTodoForm = ({
 	return (
 		<div
 			className="modal_contents_wrapper"
-			style={{ maxHeight: responsiveType == 'mobile' ? '50vh' : '70vh' }}
+			style={{ maxHeight: responsiveType == 'mobile' ? '65vh' : '75vh' }}
 		>
 			{mode == 'create' ?
 				<div className="modal_title">

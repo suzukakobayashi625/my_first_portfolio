@@ -9,7 +9,7 @@ const MobileContents_3 = ({ responsiveType }) => {
   return (
     <div
       className="modal_contents_wrapper"
-      style={{ maxHeight: responsiveType == 'mobile' ? '50vh' : '70vh' }}
+      style={{ maxHeight: responsiveType == 'mobile' ? '65vh' : '75vh' }}
     >
       <div className="scroll_wrapper">
         <div className="project_title_wrapper">
@@ -28,11 +28,11 @@ const MobileContents_3 = ({ responsiveType }) => {
             <tbody>
               <tr>
                 <td>担当工程</td>
-                <td>DB設計の一部、コーディング、UI/UXデザイン</td>
+                <td>・DB設計の一部<br />・コーディング<br />・UI/UXデザイン</td>
               </tr>
               <tr>
                 <td>環境</td>
-                <td>React.js、PHP（Laravel）、AWS（S3）、MySQL、Adobe Premiere</td>
+                <td>・React.js<br />・PHP（Laravel）<br />・AWS（S3）<br />・MySQL<br />・Adobe Premiere</td>
               </tr>
             </tbody>
           </table>
@@ -40,11 +40,13 @@ const MobileContents_3 = ({ responsiveType }) => {
           <div className="project_details">
             <div className="sub_title">詳細</div>
             <div>
-              治療院と、その保険請求を代行する団体との事務手続きをスムーズにするWEBアプリケーションを作成しました。
+              治療院と、その保険請求を代行する団体との事務手続きをスムーズにするWEBアプリケーションを作成しました。<br />
               また、リリース後の追加改修として代行団体向けの顧客管理システムの開発に携わりました。<br />
-              途中までは別の担当者が開発を行っており、リリース・現在の運用保守までを自身を含めた複数人で行いました。
+              <br />
+              途中までは別の担当者が開発を行っており、リリース・現在の運用保守までを自身を含めた複数人で行いました。<br />
               主にフロントエンドを担当しましたが、それに付随するバックエンドの一部も担当しています。<br />
-              bootstrapのテンプレートが導入されていたため、これを基準にUIデザイン変更を行なっています。
+              <br />
+              bootstrapのテンプレートが導入されていたため、これを基準にUIデザイン変更を行なっています。<br />
               モバイル対応及び、動画による操作マニュアル作成も担当しました。
             </div>
             <div className="attention">※使用している画像は生成AIを用いたイメージであり、実際のサービスを写したものではございません。</div>

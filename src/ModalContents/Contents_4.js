@@ -40,6 +40,7 @@ const Contents_4 = () => {
 					<div>
 						React.jsでポートフォリオサイトを作成しました。<br />
 						GitHub Pagesを用いて公開しています。<br />
+						<br />
 						テンプレートは使用せず、 デザインは自身で作成しています。また、PC・タブレット・モバイルでも閲覧できるように調整しています。
 					</div>
 					<div className="how_to">

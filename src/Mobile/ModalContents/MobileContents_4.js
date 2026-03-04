@@ -10,7 +10,7 @@ const MobileContents_4 = ({ responsiveType }) => {
   return (
     <div
       className="modal_contents_wrapper"
-      style={{ maxHeight: responsiveType == 'mobile' ? '50vh' : '70vh' }}
+      style={{ maxHeight: responsiveType == 'mobile' ? '65vh' : '75vh' }}
     >
       <div className="scroll_wrapper">
         <div className="project_title_wrapper">
@@ -44,13 +44,14 @@ const MobileContents_4 = ({ responsiveType }) => {
             <div>
               React.jsでポートフォリオサイトを作成しました。<br />
               GitHub Pagesを用いて公開しています。<br />
-              テンプレートは使用せず、 デザインは自身で作成しています。また、PC・タブレット・モバイルでも閲覧できるように調整しています。
+              テンプレートは使用せず、 デザインは自身で作成しています。<br />
+              また、PC・タブレット・モバイルでも閲覧できるように調整しています。
             </div>
             <div className="how_to">
               <div className="sub_title">トップに使用している画像について</div>
               <div>
                 トップの画像は、大学時代に作成した、リンゴとチワワのキメラ「チワップル」の模型です。<br />
-                生物と何らかの有機物を融合したものを作成する課題で生まれたキャラクターです。
+                生物と有機物を融合したものを作成する課題で生まれたキャラクターです。
               </div>
             </div>
           </div>

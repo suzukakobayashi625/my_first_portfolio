@@ -6,7 +6,7 @@ const MobileContents_1 = ({ responsiveType }) => {
   return (
     <div
       className="modal_contents_wrapper"
-      style={{ maxHeight: responsiveType == 'mobile' ? '50vh' : '70vh' }}
+      style={{ maxHeight: responsiveType == 'mobile' ? '65vh' : '75vh' }}
     >
       <div className="scroll_wrapper">
         <div className="project_title_wrapper">
@@ -24,11 +24,11 @@ const MobileContents_1 = ({ responsiveType }) => {
             <tbody>
               <tr>
                 <td>担当工程</td>
-                <td>DB設計、インフラ構築、コーディング、保守運用、UI/UXデザイン</td>
+                <td>・DB設計<br />・インフラ構築<br />・UI/UXデザイン<br />・コーディング<br />・保守運用</td>
               </tr>
               <tr>
                 <td>環境</td>
-                <td>React.js、Node.js、AWS（EC2,Route53,CloudWatch,CodePipeLineなど）、MySQL、Adobe XD</td>
+                <td>・React.js<br />・Node.js<br />・AWS（EC2,Route53,CloudWatch,CodePipeLineなど）<br />・MySQL<br />・Adobe XD</td>
               </tr>
             </tbody>
           </table>
@@ -36,10 +36,13 @@ const MobileContents_1 = ({ responsiveType }) => {
           <div className="project_details">
             <div className="sub_title">詳細</div>
             <div>
-              元々Microsoft Accessで管理していた、社内用の顧客情報を閲覧・編集できるアプリケーションを作成しました。
+              元々Microsoft Accessで管理していた、社内用の顧客情報を閲覧・編集できるアプリケーションを作成しました。<br />
+              <br />
               MySQLにデータ移行を行い、旧システムには無かった契約情報や訪問・アプローチ履歴などを残す機能を追加しています。<br />
-              エンジニアとして初めて担当した案件であり、学習のためデザイン〜リリースまでほとんど1人で担当しました。
+              <br />
+              エンジニアとして初めて担当した案件であり、学習のためデザイン〜リリースまでほとんど1人で担当しました。<br />
               AWSのCloudWatchで稼働状況を監視しており、エラーやサーバー停止などを感知してチャットに通知するよう設定しています。<br />
+              <br />
               現在も社内でカスタマーサポート部署を中心に利用いただいています。
             </div>
             <div className="attention">※使用している画像は生成AIを用いたイメージであり、実際のサービスを写したものではございません。</div>

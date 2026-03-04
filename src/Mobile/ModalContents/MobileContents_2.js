@@ -9,7 +9,7 @@ const MobileContents_2 = ({ responsiveType }) => {
   return (
     <div
       className="modal_contents_wrapper"
-      style={{ maxHeight: responsiveType == 'mobile' ? '50vh' : '70vh' }}
+      style={{ maxHeight: responsiveType == 'mobile' ? '65vh' : '75vh' }}
     >
       <div className="scroll_wrapper">
         <div className="project_title_wrapper">
@@ -28,11 +28,11 @@ const MobileContents_2 = ({ responsiveType }) => {
             <tbody>
               <tr>
                 <td>担当工程</td>
-                <td>コーディング、保守運用、UI/UXデザイン</td>
+                <td>・コーディング<br />・保守運用<br />・UI/UXデザイン</td>
               </tr>
               <tr>
                 <td>環境</td>
-                <td>React.js、Node.js、AWS（EC2,Route53,CloudWatch,CodePipeLine,API Gateway,Lambdaなど）、MySQL、Google Apps Script</td>
+                <td>・React.js<br />・Node.js<br />・AWS（EC2,Route53,CloudWatch,CodePipeLine,API Gateway,Lambdaなど）<br />・MySQL<br />・Google Apps Script</td>
               </tr>
             </tbody>
           </table>
@@ -40,9 +40,11 @@ const MobileContents_2 = ({ responsiveType }) => {
           <div className="project_details">
             <div className="sub_title">詳細</div>
             <div>
-              自社で提供されている治療院向けCRMの、顧客別カスタムアプリケーションを4社分担当しました。
+              自社で提供されている治療院向けCRMの、顧客別カスタムアプリケーションを4社分担当しました。<br />
+              <br />
               既存のDBサーバーからデータを送受信するAPIを作成し、予実管理できる機能があります。<br />
               顧客へのヒアリングを基に、複数回アップグレードも行なっています。<br />
+              <br />
               また、顧客によってはGoogleスプレッドシートを使用したいご要望がありましたので、GAS（Google Apps Script）を用いて、実績取得及び予算送信を行うサービスを作成しました。
             </div>
             <div className="attention">※使用している画像は生成AIを用いたイメージであり、実際のサービスを写したものではございません。</div>

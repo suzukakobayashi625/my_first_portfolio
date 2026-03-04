@@ -145,6 +145,7 @@ $basic-5: #05abc9;
           flex-direction: column;
           justify-content: space-between;
           gap: 5px;
+          height: 70px;
 
           .service_title {
             display: flex;
@@ -483,6 +484,7 @@ $basic-5: #05abc9;
 
           td {
             padding: 2px 8px;
+            border: 1px solid #14492364;
 
             &:first-child {
               background-color: $basic-2;
@@ -702,7 +704,7 @@ $basic-5: #05abc9;
         }
 
         .introduction {
-          height: 100px;
+          height: 75px;
           display: flex;
           flex-direction: column;
           justify-content: space-between;
@@ -1012,7 +1014,7 @@ $basic-5: #05abc9;
     }
 
     .modal_contents_wrapper {
-      max-height: 50vh;
+      max-height: 60vh;
       overflow-y: auto;
 
       .scroll_wrapper {
@@ -1085,13 +1087,14 @@ $basic-5: #05abc9;
             width: 100%;
 
             td {
-              padding: 2px 8px;
+              padding: 2px 4px;
+              border: 1px solid #14492364;
 
               &:first-child {
                 background-color: $basic-2;
                 color: white;
                 white-space: nowrap;
-                width: 20%;
+                width: 25%;
                 text-align: center;
               }
 
