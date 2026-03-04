@@ -2,10 +2,13 @@ import "../../scss/main.scss";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faDesktop } from "@fortawesome/free-solid-svg-icons";
 
-const MobileContents_1 = () => {
-	return (
-		<div className="modal_contents_wrapper">
-			<div className="scroll_wrapper">
+const MobileContents_1 = ({ responsiveType }) => {
+  return (
+    <div
+      className="modal_contents_wrapper"
+      style={{ maxHeight: responsiveType == 'mobile' ? '50vh' : '70vh' }}
+    >
+      <div className="scroll_wrapper">
         <div className="project_title_wrapper">
           <div className="kind">
             <div className="marker web_app">WEBアプリケーション</div>
@@ -43,8 +46,8 @@ const MobileContents_1 = () => {
           </div>
         </div>
       </div>
-		</div>
-	);
+    </div>
+  );
 };
 
 export default MobileContents_1;

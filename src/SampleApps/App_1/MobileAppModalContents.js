@@ -14,6 +14,7 @@ const MobileAppModalContents = ({
   setConfirmModalOpen,
   target,
   allDeleteTODO,
+  responsiveType,
 }) => {
 
   if (modalContentsId == null) {
@@ -33,6 +34,7 @@ const MobileAppModalContents = ({
         mode={mode}
         setConfirmModalOpen={setConfirmModalOpen}
         target={target}
+        responsiveType={responsiveType}
       />
     );
   } else if (modalContentsId == 2) {

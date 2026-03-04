@@ -18,6 +18,7 @@ const MobileMain = ({
   workRef,
   skillRef,
   newsRef,
+  responsiveType,
 }) => {
   const [modalOpen, setModalOpen] = useState(false);
   const [modalContentsId, setModalContentsId] = useState(null);
@@ -34,23 +35,23 @@ const MobileMain = ({
 
     if (modalContentsId == 1) {
       return (
-        <MobileContents_1 />
+        <MobileContents_1 responsiveType={responsiveType} />
       );
     } else if (modalContentsId == 2) {
       return (
-        <MobileContents_2 />
+        <MobileContents_2 responsiveType={responsiveType} />
       );
     } else if (modalContentsId == 3) {
       return (
-        <MobileContents_3 />
+        <MobileContents_3 responsiveType={responsiveType} />
       );
     } else if (modalContentsId == 4) {
       return (
-        <MobileContents_4 />
+        <MobileContents_4 responsiveType={responsiveType} />
       );
     } else if (modalContentsId == 5) {
       return (
-        <MobileContents_5 />
+        <MobileContents_5 responsiveType={responsiveType} />
       );
     }
   };
@@ -59,7 +60,12 @@ const MobileMain = ({
     <>
       <div className="mobile_main_container">
         <div className="content_1" ref={topRef}>
-          <img src={topImage} className="top_image" alt="top_image" />
+          <img
+            src={topImage}
+            className="top_image"
+            alt="top_image"
+            style={{ height: responsiveType == 'mobile' ? '250px' : '350px' }}
+          />
           <div className="image_filter" />
           <div className="main_title">S.Kobayashi<br />Portfolio</div>
         </div>
@@ -67,8 +73,11 @@ const MobileMain = ({
         <MobileWorks
           handleModalOpen={handleModalOpen}
           workRef={workRef}
+          responsiveType={responsiveType}
         />
-        <MobileSkills skillRef={skillRef} />
+        <MobileSkills
+          skillRef={skillRef}
+        />
         <MobileNews newsRef={newsRef} />
       </div>
       <MobileModal

@@ -10,14 +10,12 @@ import CrmAppImage from "../../src/images/crm_image.PNG";
 import RezeptImage from "../../src/images/rezept_image.PNG";
 import PortfolioImage from "../../src/images/IMG_0317.jpg";
 import SampleAppImage_1 from "../../src/images/sample_app_1_image.png";
-import { useNavigate } from "react-router-dom";
 
 const MobileWorks = ({
 	handleModalOpen,
 	workRef,
+	responsiveType,
 }) => {
-
-	const navigate = useNavigate();
 
 	return (
 		<div className="content_3" ref={workRef}>
@@ -26,9 +24,9 @@ const MobileWorks = ({
 				<Swiper
 					navigation   // ← 左右ボタン
 					modules={[Navigation]}
-					slidesPerView={1}      // ← 常に3つ表示
+					slidesPerView={responsiveType == 'mobile' ? 1 : 2}      // ← 常に表示する個数
 					slidesPerGroup={1}     // ← 1つずつ動く
-					spaceBetween={20}
+					spaceBetween={responsiveType == 'mobile' ? 20 : 10}
 					loop={true}
 				>
 					<SwiperSlide>

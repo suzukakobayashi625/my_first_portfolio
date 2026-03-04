@@ -32,7 +32,7 @@ const Contents_5 = () => {
             </tr>
             <tr>
               <td>環境</td>
-              <td>React.js、AWS（EC2など）</td>
+              <td>React.js</td>
             </tr>
           </tbody>
         </table>

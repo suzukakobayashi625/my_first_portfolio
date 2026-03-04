@@ -72,6 +72,7 @@ const App = () => {
                   workRef={workRef}
                   skillRef={skillRef}
                   newsRef={newsRef}
+                  responsiveType={responsiveType}
                 />
               </>
           }
@@ -82,7 +83,7 @@ const App = () => {
             responsiveType == 'pc' ?
               <SampleApp_1 />
               :
-              <MobileSampleApp_1 />
+              <MobileSampleApp_1 responsiveType={responsiveType} />
           }
         />
         <Route path="*" element={<>Not Found</>} />

@@ -10,14 +10,11 @@ import CrmAppImage from "./images/crm_image.PNG";
 import RezeptImage from "./images/rezept_image.PNG";
 import PortfolioImage from "./images/IMG_0317.jpg";
 import SampleAppImage_1 from "./images/sample_app_1_image.png";
-import { useNavigate } from "react-router-dom";
 
 const Works = ({
 	handleModalOpen,
 	workRef,
 }) => {
-
-	const navigate = useNavigate();
 
 	return (
 		<div className="content_3" ref={workRef}>

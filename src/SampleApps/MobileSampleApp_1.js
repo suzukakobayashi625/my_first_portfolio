@@ -11,7 +11,7 @@ import MobileAppModal_1 from "./App_1/MobileAppModal_1";
 import MobileAppModal_2 from "./App_1/MobileAppModal_2";
 import MobileAppModalContents from "./App_1/MobileAppModalContents";
 
-const MobileSampleApp_1 = () => {
+const MobileSampleApp_1 = ({ responsiveType }) => {
 
   const STORAGE_KEY = "sample_app_1";
   const [todoList, setTodoList] = useState([]);
@@ -164,6 +164,7 @@ const MobileSampleApp_1 = () => {
           setConfirmModalOpen={setConfirmModalOpen}
           target={target}
           allDeleteTODO={allDeleteTODO}
+          responsiveType={responsiveType}
         />
       </MobileAppModal_1>
       <MobileAppModal_2

@@ -5,9 +5,12 @@ import {
   faMobileScreen,
 } from "@fortawesome/free-solid-svg-icons";
 
-const MobileContents_3 = () => {
+const MobileContents_3 = ({ responsiveType }) => {
   return (
-    <div className="modal_contents_wrapper">
+    <div
+      className="modal_contents_wrapper"
+      style={{ maxHeight: responsiveType == 'mobile' ? '50vh' : '70vh' }}
+    >
       <div className="scroll_wrapper">
         <div className="project_title_wrapper">
           <div className="kind">

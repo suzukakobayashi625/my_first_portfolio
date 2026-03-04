@@ -30,7 +30,7 @@ const Contents_4 = () => {
 						</tr>
 						<tr>
 							<td>環境</td>
-							<td>React.js、Node.js、AWS（EC2など）</td>
+							<td>React.js</td>
 						</tr>
 					</tbody>
 				</table>
@@ -39,8 +39,15 @@ const Contents_4 = () => {
 					<div className="sub_title">詳細</div>
 					<div>
 						React.jsでポートフォリオサイトを作成しました。<br />
-						ドメインを取得し、EC2インスタンスで起動しています。<br />
-						テンプレートは使用せず、画面構成は自分で作成しています。また、PC・タブレット・モバイルのレスポンシブ対応を行いました。
+						GitHub Pagesを用いて公開しています。<br />
+						テンプレートは使用せず、 デザインは自身で作成しています。また、PC・タブレット・モバイルでも閲覧できるように調整しています。
+					</div>
+					<div className="how_to">
+						<div className="sub_title">トップに使用している画像について</div>
+						<div>
+							トップの画像は、大学時代に作成した、リンゴとチワワのキメラ「チワップル」の模型です。<br />
+							生物と何らかの有機物を融合したものを作成する課題で生まれたキャラクターです。
+						</div>
 					</div>
 				</div>
 			</div>

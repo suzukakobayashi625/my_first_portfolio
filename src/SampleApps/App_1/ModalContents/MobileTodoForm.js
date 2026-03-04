@@ -14,6 +14,7 @@ const MobileTodoForm = ({
 	mode,
 	setConfirmModalOpen,
 	target,
+	responsiveType,
 }) => {
 
 	const onSetColor = (form, color_1) => {
@@ -161,7 +162,10 @@ const MobileTodoForm = ({
 	};
 
 	return (
-		<div className="modal_contents_wrapper">
+		<div
+			className="modal_contents_wrapper"
+			style={{ maxHeight: responsiveType == 'mobile' ? '50vh' : '70vh' }}
+		>
 			{mode == 'create' ?
 				<div className="modal_title">
 					<FontAwesomeIcon icon={faPlus} />

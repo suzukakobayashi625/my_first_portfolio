@@ -14,7 +14,6 @@ const MobileAppModal_1 = ({
   useEffect(() => {
     if (modalOpen) {
       document.body.style.overflow = 'hidden';
-
       return () => {
         document.body.style.overflow = 'auto';
       };

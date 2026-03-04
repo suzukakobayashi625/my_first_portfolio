@@ -8,9 +8,12 @@ import {
 } from "@fortawesome/free-solid-svg-icons";
 import { Link } from "react-router-dom";
 
-const MobileContents_5 = () => {
+const MobileContents_5 = ({ responsiveType }) => {
   return (
-    <div className="modal_contents_wrapper">
+    <div
+      className="modal_contents_wrapper"
+      style={{ maxHeight: responsiveType == 'mobile' ? '50vh' : '70vh' }}
+    >
       <div className="scroll_wrapper">
         <div className="project_title_wrapper">
           <div className="kind">
@@ -33,7 +36,7 @@ const MobileContents_5 = () => {
               </tr>
               <tr>
                 <td>環境</td>
-                <td>React.js、AWS（EC2など）</td>
+                <td>React.js</td>
               </tr>
             </tbody>
           </table>
@@ -56,7 +59,7 @@ const MobileContents_5 = () => {
               作成したTODOのデータは、ローカルストレージに保存されるようになっています。
             </div>
             <div className="how_to">
-              <div className="sub_title">モバイル操作について</div>
+              <div className="sub_title">モバイル・タブレット操作について</div>
               <div>
                 画面右下の「＋」ボタンで新規のTODOを作成することができます。<br />
                 TODOを完了したら、リスト右側にある「完了」のチェックボックスを入れます。<br />
