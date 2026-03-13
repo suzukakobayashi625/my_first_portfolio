@@ -11,6 +11,7 @@ import MobileContents_2 from "./ModalContents/MobileContents_2";
 import MobileContents_3 from "./ModalContents/MobileContents_3";
 import MobileContents_4 from "./ModalContents/MobileContents_4";
 import MobileContents_5 from "./ModalContents/MobileContents_5";
+import MobileContents_6 from "./ModalContents/MobileContents_6";
 import MobileFooter from "./MobileFooter";
 
 const MobileMain = ({
@@ -53,6 +54,10 @@ const MobileMain = ({
     } else if (modalContentsId == 5) {
       return (
         <MobileContents_5 responsiveType={responsiveType} />
+      );
+    } else if (modalContentsId == 6) {
+      return (
+        <MobileContents_6 responsiveType={responsiveType} />
       );
     }
   };

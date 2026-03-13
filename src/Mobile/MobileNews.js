@@ -8,6 +8,10 @@ const MobileNews = ({
 
   const news = [
     {
+      date: '2026/03/13',
+      detail: 'WORKSにサンプルを追加しました。',
+    },
+    {
       date: '2026/03/01',
       detail: 'ポートフォリオサイトを公開しました。',
     },

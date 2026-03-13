@@ -11,6 +11,7 @@ import Contents_2 from "./ModalContents/Contents_2";
 import Contents_3 from "./ModalContents/Contents_3";
 import Contents_4 from "./ModalContents/Contents_4";
 import Contents_5 from "./ModalContents/Contents_5";
+import Contents_6 from "./ModalContents/Contents_6";
 import Footer from "./Footer";
 
 const Main = ({
@@ -52,6 +53,10 @@ const Main = ({
     } else if (modalContentsId == 5) {
       return (
         <Contents_5 />
+      );
+    } else if (modalContentsId == 6) {
+      return (
+        <Contents_6 />
       );
     }
   };

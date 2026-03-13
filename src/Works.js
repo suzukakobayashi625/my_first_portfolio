@@ -10,6 +10,7 @@ import CrmAppImage from "./images/crm_image.PNG";
 import RezeptImage from "./images/rezept_image.PNG";
 import PortfolioImage from "./images/IMG_0317.jpg";
 import SampleAppImage_1 from "./images/sample_app_1_image.png";
+import MemokunImage from "./images/memokun.png";
 
 const Works = ({
 	handleModalOpen,
@@ -95,6 +96,23 @@ const Works = ({
 								<div className="service_title">
 									<div className="marker sample">サンプル</div>
 									<div>サンプルTODOアプリケーション</div>
+								</div>
+								<div className="detail_link">
+									<div>詳細を見る</div>
+									<FontAwesomeIcon icon={faAngleRight} />
+								</div>
+							</div>
+						</div>
+					</SwiperSlide>
+					<SwiperSlide>
+						<div className="project" onClick={() => handleModalOpen(6)}>
+							<div className="image_background">
+								<img src={MemokunImage} className="icon_image" alt="サンプルアプリ２のアイコン画像" />
+							</div>
+							<div className="introduction">
+								<div className="service_title">
+									<div className="marker sample">サンプル</div>
+									<div>備忘録メモアプリケーション</div>
 								</div>
 								<div className="detail_link">
 									<div>詳細を見る</div>

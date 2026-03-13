@@ -139,6 +139,19 @@ $basic-5: #05abc9;
           object-fit: cover;
         }
 
+        .image_background {
+          width: 100%;
+          height: 200px;
+          background-color: #520e6b;
+          display: flex;
+          align-items: center;
+          justify-content: center;
+
+          img {
+            width: 110px;
+          }
+        }
+
         .introduction {
           height: 100%;
           display: flex;
@@ -702,6 +715,19 @@ $basic-5: #05abc9;
           width: 100%;
           height: 130px;
           object-fit: cover;
+        }
+
+        .image_background {
+          width: 100%;
+          height: 130px;
+          background-color: #520e6b;
+          display: flex;
+          align-items: center;
+          justify-content: center;
+
+          img {
+            width: 90px;
+          }
         }
 
         .introduction {
