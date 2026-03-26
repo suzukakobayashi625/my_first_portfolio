@@ -53,7 +53,7 @@ const Skills = ({
 										</td>
 									</tr>
 									<tr>
-										<td>React.js</td>
+										<td>React</td>
 										<td>3.5年</td>
 										<td>
 											<div className="level">
@@ -66,7 +66,7 @@ const Skills = ({
 										</td>
 									</tr>
 									<tr>
-										<td>TypeScript.js</td>
+										<td>TypeScript</td>
 										<td>0.5年</td>
 										<td>
 											<div className="level">
