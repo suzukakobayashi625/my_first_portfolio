@@ -8,6 +8,10 @@ const News = ({
 
   const news = [
     {
+      date: '2026/08/04',
+      detail: 'WORKSの内容を編集しました。',
+    },
+    {
       date: '2026/03/13',
       detail: 'WORKSにサンプルを追加しました。',
     },

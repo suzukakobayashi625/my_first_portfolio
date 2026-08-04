@@ -12,6 +12,8 @@ import MobileContents_3 from "./ModalContents/MobileContents_3";
 import MobileContents_4 from "./ModalContents/MobileContents_4";
 import MobileContents_5 from "./ModalContents/MobileContents_5";
 import MobileContents_6 from "./ModalContents/MobileContents_6";
+import MobileContents_7 from "./ModalContents/MobileContents_7";
+import MobileContents_8 from "./ModalContents/MobileContents_8";
 import MobileFooter from "./MobileFooter";
 
 const MobileMain = ({
@@ -58,6 +60,14 @@ const MobileMain = ({
     } else if (modalContentsId == 6) {
       return (
         <MobileContents_6 responsiveType={responsiveType} />
+      );
+    } else if (modalContentsId == 7) {
+      return (
+        <MobileContents_7 responsiveType={responsiveType} />
+      );
+    } else if (modalContentsId == 8) {
+      return (
+        <MobileContents_8 responsiveType={responsiveType} />
       );
     }
   };

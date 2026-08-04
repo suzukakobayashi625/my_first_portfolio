@@ -12,6 +12,8 @@ import Contents_3 from "./ModalContents/Contents_3";
 import Contents_4 from "./ModalContents/Contents_4";
 import Contents_5 from "./ModalContents/Contents_5";
 import Contents_6 from "./ModalContents/Contents_6";
+import Contents_7 from "./ModalContents/Contents_7";
+import Contents_8 from "./ModalContents/Contents_8";
 import Footer from "./Footer";
 
 const Main = ({
@@ -30,33 +32,41 @@ const Main = ({
   };
 
   const ModalContents = () => {
-    if (modalContentsId == null) {
+    if (modalContentsId === null) {
       return (<></>);
     }
 
-    if (modalContentsId == 1) {
+    if (modalContentsId === 1) {
       return (
         <Contents_1 />
       );
-    } else if (modalContentsId == 2) {
+    } else if (modalContentsId === 2) {
       return (
         <Contents_2 />
       );
-    } else if (modalContentsId == 3) {
+    } else if (modalContentsId === 3) {
       return (
         <Contents_3 />
       );
-    } else if (modalContentsId == 4) {
+    } else if (modalContentsId === 4) {
       return (
         <Contents_4 />
       );
-    } else if (modalContentsId == 5) {
+    } else if (modalContentsId === 5) {
       return (
         <Contents_5 />
       );
-    } else if (modalContentsId == 6) {
+    } else if (modalContentsId === 6) {
       return (
         <Contents_6 />
+      );
+    } else if (modalContentsId === 7) {
+      return (
+        <Contents_7 />
+      );
+    } else if (modalContentsId === 8) {
+      return (
+        <Contents_8 />
       );
     }
   };

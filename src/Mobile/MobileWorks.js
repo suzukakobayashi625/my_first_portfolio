@@ -11,6 +11,8 @@ import RezeptImage from "../../src/images/rezept_image.PNG";
 import PortfolioImage from "../../src/images/IMG_0317.jpg";
 import SampleAppImage_1 from "../../src/images/sample_app_1_image.png";
 import MemokunImage from "../../src/images/memokun.png";
+import RezeptOcrImage from "../../src/images/rezept_ocr_image.png";
+import VideoMakingImage from "../../src/images/video_making_image.png";
 
 const MobileWorks = ({
 	handleModalOpen,
@@ -62,11 +64,41 @@ const MobileWorks = ({
 					</SwiperSlide>
 					<SwiperSlide>
 						<div className="project" onClick={() => handleModalOpen(3)}>
-							<img src={RezeptImage} className="service_image" alt="レセプト書類Ïのイメージ画像" />
+							<img src={RezeptImage} className="service_image" alt="レセプト書類のイメージ画像" />
 							<div className="introduction">
 								<div className="service_title">
 									<div className="marker web_app">WEBアプリ</div>
 									<div>治療院業界向け BtoB WEBサービス</div>
+								</div>
+								<div className="detail_link">
+									<div>詳細を見る</div>
+									<FontAwesomeIcon icon={faAngleRight} />
+								</div>
+							</div>
+						</div>
+					</SwiperSlide>
+					<SwiperSlide>
+						<div className="project" onClick={() => handleModalOpen(7)}>
+							<img src={RezeptOcrImage} className="service_image" alt="レセプトOCRのイメージ画像" />
+							<div className="introduction">
+								<div className="service_title">
+									<div className="marker other">その他</div>
+									<div>レセプト書類OCR＋AI分析API</div>
+								</div>
+								<div className="detail_link">
+									<div>詳細を見る</div>
+									<FontAwesomeIcon icon={faAngleRight} />
+								</div>
+							</div>
+						</div>
+					</SwiperSlide>
+					<SwiperSlide>
+						<div className="project" onClick={() => handleModalOpen(8)}>
+							<img src={VideoMakingImage} className="service_image" alt="動画編集のイメージ画像" />
+							<div className="introduction">
+								<div className="service_title">
+									<div className="marker other">その他</div>
+									<div>セミナー動画編集</div>
 								</div>
 								<div className="detail_link">
 									<div>詳細を見る</div>

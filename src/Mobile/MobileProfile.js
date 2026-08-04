@@ -11,7 +11,7 @@ const MobileProfile = ({
         <img src={avaterImage} className="avater_image" alt="avater" />
         <div className="introduction">
           <div>
-            埼玉県熊谷市生まれのフロントエンドエンジニアです。<br />
+            埼玉県熊谷市生まれのシステムエンジニアです。<br />
             美術大学を卒業後、大手飲食店企業に就職。<br />
             その後、医療系ソフトウェア開発会社のカスタマーサポートを経て、同社のWEBアプリケーションをはじめとする事業に携わってきました。<br />
             UI・UXデザインを考慮した、「操作マニュアルが無くてもユーザーが分かりやすいサービス」を提供できるよう心掛けています。<br />
